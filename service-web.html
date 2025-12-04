@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -28,6 +29,11 @@
             .guide-card { transition: all 0.3s ease; }
             .guide-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(255, 125, 0, 0.1); }
             .staff-card { border-left: 4px solid #FF7D00; }
+            .业态表格 td { vertical-align: top; }
+            .业态表格 th { vertical-align: top; }
+            .regulation-text { line-height: 1.8; }
+            .regulation-article { margin-bottom: 1rem; }
+            .regulation-subitem { margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem; }
         }
     </style>
 </head>
@@ -45,7 +51,7 @@
     </header>
 
     <main class="container mx-auto px-4 py-12">
-        <!-- 办事指南长图（删除右侧重复盒子 + 替换下方图片为002.png） -->
+        <!-- 办事指南长图 -->
         <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
             <div class="flex items-center mb-6">
                 <div class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4">
@@ -54,7 +60,7 @@
                 <h3 class="text-2xl font-bold text-dark">办事指南长图</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- 保留左侧“许可证新办”盒子（图片为001.png） -->
+                <!-- 许可证新办 -->
                 <div class="guide-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
                     <div class="bg-gray-100 h-60 flex items-center justify-center">
                         <img src="001.png" alt="许可证新办流程长图" class="w-full h-full object-cover">
@@ -67,7 +73,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- 下方“片区履职专刊”盒子（图片替换为002.png） -->
+                <!-- 片区履职专刊 -->
                 <div
                     class="guide-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm md:col-span-2">
                     <div class="bg-gray-100 h-80 flex items-center justify-center">
@@ -214,6 +220,367 @@
             </div>
         </section>
 
+        <!-- 零售业态分类说明 -->
+        <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4">
+                    <i class="fa fa-th-list text-service text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark">零售业态分类说明</h3>
+            </div>
+            <!-- 响应式表格容器（带滚动） -->
+            <div class="overflow-x-auto">
+                <table class="业态表格 w-full border-collapse">
+                    <!-- 表头 -->
+                    <thead>
+                        <tr class="bg-service/10 border-b border-gray-200">
+                            <th class="px-4 py-3 text-left text-lg font-semibold text-service w-1/6">业态类型</th>
+                            <th class="px-4 py-3 text-left text-lg font-semibold text-service w-2/6">定义</th>
+                            <th class="px-4 py-3 text-left text-lg font-semibold text-service w-3/6">基本特点</th>
+                        </tr>
+                    </thead>
+                    <!-- 表体 -->
+                    <tbody class="divide-y divide-gray-200">
+                        <!-- 食杂店 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-4 font-medium">食杂店</td>
+                            <td class="px-4 py-4 text-gray-700">以销售烟、酒、饮料、休闲食品及日杂货为主，独立、传统的无明显品牌形象的零售业态</td>
+                            <td class="px-4 py-4 text-gray-700">
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>选址：居民区内、传统商业区内及农村地区；</li>
+                                    <li>营业面积：100 平方米以内；</li>
+                                    <li>销售方式：柜台销售与自选（开架）销售相结合；</li>
+                                    <li>服务时间：12 小时以上；</li>
+                                    <li>信息化程度：无或初级信息管理系统</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <!-- 便利店 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-4 font-medium">便利店</td>
+                            <td class="px-4 py-4 text-gray-700">以开架自选为主，销售小容量应急性的食品、日用小百货等，以满足顾客便利性需求为主要目的的零售业态</td>
+                            <td class="px-4 py-4 text-gray-700">
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>选址：商业中心区、居民区、交通要道及车站、医院等公共活动区附近；</li>
+                                    <li>营业面积：100 平方米左右；</li>
+                                    <li>销售方式：自选销售，收银处统一结算；</li>
+                                    <li>服务时间：16 小时以上；</li>
+                                    <li>信息化程度：较高；</li>
+                                    <li>经营方式：单体或连锁</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <!-- 超市 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-4 font-medium">超市</td>
+                            <td class="px-4 py-4 text-gray-700">以开架自选、消费者在出口付款为形式，满足消费者一次性购全大众化适用品需求的零售业态</td>
+                            <td class="px-4 py-4 text-gray-700">
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>选址：市、区（县）商业中心、居民区、交通要道、城郊结合部附近；</li>
+                                    <li>营业面积：200-6000 平方米（大型综合超市≥6000 平方米）；</li>
+                                    <li>销售方式：自选（烟草制品柜台销售）；</li>
+                                    <li>结算方式：出入口分设，收银台统一结算；</li>
+                                    <li>服务时间：不低于 12 小时；</li>
+                                    <li>信息化程度：较高；</li>
+                                    <li>经营方式：单体或连锁</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <!-- 商场 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-4 font-medium">商场</td>
+                            <td class="px-4 py-4 text-gray-700">在一个建筑物内，经营若干大类商品；实行统一管理，分区销售；满足顾客对时尚、中高档商品多样化选择需求的零售业态
+                            </td>
+                            <td class="px-4 py-4 text-gray-700">
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>选址：市、区（县）商业中心、历史形成的商业集聚地；</li>
+                                    <li>营业面积：≥2000 平方米（多为 6000-20000 平方米）；</li>
+                                    <li>销售方式：柜台销售与自选（开架）销售相结合；</li>
+                                    <li>服务时间：12 小时以上；</li>
+                                    <li>信息化程度：较高</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <!-- 烟酒商店 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-4 font-medium">烟酒商店</td>
+                            <td class="px-4 py-4 text-gray-700">以销售烟草制品、酒类商品为主的零售业态</td>
+                            <td class="px-4 py-4 text-gray-700">
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>选址：市、区（县）商业中心、居民区或百货店、购物中心内；</li>
+                                    <li>营业面积：大多 200 平方米以下；</li>
+                                    <li>销售方式：柜台销售与自选（开架）销售相结合；</li>
+                                    <li>服务时间：12 小时以上；</li>
+                                    <li>信息化程度：不一；</li>
+                                    <li>经营方式：单体或连锁</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <!-- 娱乐服务类 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-4 font-medium">娱乐服务类</td>
+                            <td class="px-4 py-4 text-gray-700">以提供餐饮、住宿、休闲、娱乐等服务场所的业态</td>
+                            <td class="px-4 py-4 text-gray-700">
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>选址：市、区（县）商业区以及城郊结合部；</li>
+                                    <li>营业面积：不等；</li>
+                                    <li>销售方式：多为商品部、吧台售卖，可点叫购买；</li>
+                                    <li>服务时间：一般在下午及夜间；</li>
+                                    <li>信息化程度：较高</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <!-- 其他类 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-4 font-medium">其他类</td>
+                            <td class="px-4 py-4 text-gray-700">以经营各类非烟草制品为主的其他商品零售或服务形式，不能归入上述 6 类业态的其他零售业态</td>
+                            <td class="px-4 py-4 text-gray-700">
+                                <ol class="list-decimal list-inside space-y-1">
+                                    <li>传统食品零售专业店（土（水）特产、水果、干货店等）；</li>
+                                    <li>其他零售专业店（文具、书报、农具等单一品类）；</li>
+                                    <li>小型服务性行业（修车行、理发店等，难归娱乐服务类）；</li>
+                                    <li>持证内供（政府、部队、监狱等内部供应，不对外营业）</li>
+                                </ol>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-4 text-center text-gray-600 italic">零售业态分类详细信息表</p>
+        </section>
+
+        <!-- 新增：绍兴市烟草制品零售点合理布局规定 -->
+        <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4">
+                    <i class="fa fa-book text-service text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark">绍兴市烟草制品零售点合理布局规定</h3>
+            </div>
+            <!-- 法规正文容器（带内边距和阴影，提升阅读体验） -->
+            <div class="bg-gray-50 rounded-lg p-6 md:p-8 shadow-inner regulation-text text-gray-700">
+                <!-- 标题居中 -->
+                <h4 class="text-xl font-bold text-center text-dark mb-8">绍兴市烟草制品零售点合理布局规定</h4>
+
+                <!-- 第一条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第一条
+                        为加强烟草专卖零售许可证管理，优化辖区内烟草制品零售点布局，规范烟草市场秩序，保护公民、法人及其他组织的合法权益，根据《中华人民共和国行政许可法》、《中华人民共和国未成年人保护法》、《中华人民共和国烟草专卖法》及其实施条例、《烟草专卖许可证管理办法》及其实施细则等法律法规和规章规定，结合本市实际，制定本规定。
+                    </p>
+                </div>
+
+                <!-- 第二条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第二条 本规定适用于绍兴市行政区域内烟草制品零售点（以下简称零售点）的布局管理。</p>
+                </div>
+
+                <!-- 第三条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第三条
+                        本规定遵循依法行政、科学规划、服务社会、均衡发展原则，根据辖区人口数量、网点存量、区域属性、交通状况、经济发展水平、消费能力以及相关发展规划等要素确定烟草制品零售点布局。</p>
+                </div>
+
+                <!-- 第四条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第四条 本规定所称零售点是指公民、法人或其他组织依法申请取得烟草专卖零售许可证从事烟草制品零售业务的经营场所。</p>
+                    <p class="mt-2">本规定所称零售业态共分为七类：食杂店、便利店、超市、商场、烟酒商店、娱乐服务类和其他类。</p>
+                    <p class="mt-2">零售点应当设置于与住所相独立的固定经营场所，面向公众经营，并在营业执照登记注册的经营场所范围内。</p>
+                </div>
+
+                <!-- 第五条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第五条 具有下列情形之一的，不予发放烟草专卖零售许可证：</p>
+                    <div class="regulation-subitem">
+                        <p class="font-medium">㈠申请主体资格</p>
+                        <ol class="list-decimal list-inside space-y-1 mt-1">
+                            <li>申请人为无民事行为能力人或限制民事行为能力人的；</li>
+                            <li>取消从事烟草专卖业务资格不满三年的；</li>
+                            <li>因申请人隐瞒有关情况或者提供虚假材料，烟草专卖行政主管部门作出不予受理或者不予发证决定后，申请人一年内再次提出申请的；</li>
+                            <li>因申请人以欺骗、贿赂等不正当手段取得的烟草专卖许可证被撤销后，申请人三年内再次提出申请的；</li>
+                            <li>未领取烟草专卖零售许可证经营烟草专卖品业务，并且一年内被执法机关处罚两次以上，在三年内申请领取烟草专卖零售许可证的；</li>
+                            <li>未领取烟草专卖零售许可证经营烟草专卖品业务被追究刑事责任，在三年内申请领取烟草专卖零售许可证的；</li>
+                            <li>外商投资的商业企业或者个体工商户，及其以特许、吸纳加盟店和其他再投资等形式变相从事烟草专卖品经营业务的。</li>
+                        </ol>
+                    </div>
+                    <div class="regulation-subitem">
+                        <p class="font-medium">㈡经营场所</p>
+                        <ol class="list-decimal list-inside space-y-1 mt-1">
+                            <li>无固定经营场所的；</li>
+                            <li>经营场所与住所不相独立的；</li>
+                            <li>经营燃气、化工、油漆、农药、化肥等营业场所基于安全因素不适宜经营卷烟的，或生产、经营、储存有毒有害、易燃易爆易挥发类物质，不符合食品安全标准，容易造成烟草制品污染的；</li>
+                            <li>同一经营场所已办理烟草专卖零售许可证且许可证还在有效期内的。</li>
+                        </ol>
+                    </div>
+                    <div class="regulation-subitem">
+                        <p class="font-medium">㈢经营模式</p>
+                        <ol class="list-decimal list-inside space-y-1 mt-1">
+                            <li>利用自动售货机（柜）或者其他自动售货形式，销售或者变相销售烟草制品的；</li>
+                            <li>利用信息网络渠道销售烟草制品的。</li>
+                        </ol>
+                    </div>
+                    <div class="regulation-subitem">
+                        <p class="font-medium">㈣特殊区域</p>
+                        <ol class="list-decimal list-inside space-y-1 mt-1">
+                            <li>中小学校内部及学生进出通道口100米以内的；</li>
+                            <li>幼儿园内部及学生进出通道口30米以内的；</li>
+                            <li>青少年培训机构等未成年人聚集场所内的；</li>
+                            <li>党政机关内部；</li>
+                            <li>医疗卫生机构内部；</li>
+                            <li>当地人大、政府及其相关部门等规定的其他禁止性经营场所。</li>
+                        </ol>
+                    </div>
+                    <div class="regulation-subitem">
+                        <p class="font-medium">㈤法律、法规、规章和国家烟草专卖局规定的其他不予发证的情形。</p>
+                    </div>
+                </div>
+
+                <!-- 第六条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第六条 零售点间隔距离按以下规则设置：</p>
+                    <div class="regulation-subitem">
+                        <ol class="list-decimal list-inside space-y-1">
+                            <li>零售业态为食杂店、便利店、超市、商场、烟酒商店的，间隔距离不小于100米；</li>
+                            <li>零售业态为娱乐服务类、其他类的，间隔距离不小于300米。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 第七条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第七条
+                        本市烟草制品零售点布局以街道（行政村除外）、乡镇（行政村除外）、行政村作为市场单元区域，并对市场单元区域内的零售点数量进行动态调整，零售点数量设置应当以指导数为上限，间隔距离按本规定第六条之规定。
+                    </p>
+                    <p class="mt-2">
+                        市场单元区域的范围与指导数，由发证机关结合当地政府规划或城市发展实际予以界定。发证机关应当定期对外发布市场单元区域划分范围及现存零售点分布情况。发证机关对已经超出指导数的区域，待减少至上限后，采取“退一进一”的原则核发。申请办理烟草专卖零售许可业务，并已依法受理后，在审核期间发生本款情形的，按照新的范围、状态办理。
+                    </p>
+                </div>
+
+                <!-- 第八条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第八条 特殊单元区域按以下规则单独设置零售点，不受本规定第六条间隔距离、第七条数量规定的限制：</p>
+                    <div class="regulation-subitem">
+                        <ol class="list-decimal list-inside space-y-2 mt-1">
+                            <li>政府统一规划建设的贸易、服务市场内部零售点按照市场内总商铺数（不含柜台、摊位）设置，商铺数在100个以下的，可设置1个零售点，商铺数在100个以上200个以下的，可设置2个零售点，商铺数在200个以上300个以下的，可设置3个零售点，以此类推，零售点数量不超过10个；
+                            </li>
+                            <li>高等院校、物流园区、文化创意园区、旅游景点、车站、高速服务区等相对封闭区域内部经营的零售点设置数量不超过1个；</li>
+                            <li>封闭式居民小区内部经营的零售点设置数量不超过1个，零售点应设置在小区附属服务设施内；</li>
+                            <li>商业综合体每幢内部经营的零售点设置数量不超过1个。以经营预包装副食品为主的单层营业面积（不包括独立的仓储、办公场所）在250平方米以上的超市、便利店，不计入本项设置数量；
+                            </li>
+                            <li>占地面积在1万5千平方米以上工业厂区内零售点设置数量不超过1个，零售点应设置在已形成实际商品展卖场所的生活区内；</li>
+                            <li>除市场、商业综合体外的商用楼宇内零售点设置数量不超过1个，零售点应设置在已形成实际商品展卖场所的地面一层。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 第九条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第九条 有下列情形之一的，不受本规定第六条间隔距离、第七条数量规定的限制：</p>
+                    <div class="regulation-subitem">
+                        <ol class="list-decimal list-inside space-y-2 mt-1">
+                            <li>2年内无涉烟违法记录的持证零售户，经营主体为自然人，自然人死亡或丧失民事行为能力，发证机关作出注销决定后3个月内，其配偶、子女、父母在原经营场所重新申领许可证的；</li>
+                            <li>取得许可证1年以上的持证零售户（依据本规定第九条第㈤项设置的零售点除外）在原经营场所基础上对经营场所进行拓展或缩小，重新申领许可证，且歇业申请与新办申请同时被受理的；</li>
+                            <li>取得许可证2年以上且2年内无涉烟违法记录的持证零售户（依照本规定第十条第㈡项变更许可证后，在新经营场所经营未满2年的持证零售户除外）歇业，其他申请人在原经营场所申领许可证，且歇业申请与新办申请同时被受理的；
+                            </li>
+                            <li>2年内无涉烟违法记录的持证零售户，因法院判决、法人或其他组织分立、合并，或个体工商户转型为企业等，在原经营场所重新申领许可证的；</li>
+                            <li>以经营预包装副食品为主的单层营业面积（不包括独立的仓储、办公场所）在250平方米以上的超市、便利店，或营业面积在2000平方米以上的宾馆酒店的；</li>
+                            <li>低保户、低保边缘户、特困户、烈属、残疾等级为一级、二级的残疾人或营业执照组成形式为家庭经营的残疾人（家庭经营成员中两人以上为残疾人）申领许可证，且未以合伙、雇佣、委托等方式交由他人经营的。申请人需具有自主经营能力和完全民事行为能力，在户籍所在地的区、县（市）提出申领的，且申请人适用本项情形取得的许可证限持有一本；
+                            </li>
+                            <li>中小学校、幼儿园周边持证零售户，歇业后6个月内搬迁至其他场所经营，在原发证机关辖区内重新申领许可证的；持证零售户主动配合中小学校、幼儿园周边许可证清理工作，因原中小学校、幼儿园搬迁或进出通道口改变等客观原因导致清理范围发生变化1年内，于原经营场所重新申领许可证的。同一许可证适用本项情形限照顾一次。
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 第十条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十条 有下列情形之一的，适当放宽本规定第六条间隔距离规定的限制，不受本规定第七条数量规定的限制：</p>
+                    <div class="regulation-subitem">
+                        <ol class="list-decimal list-inside space-y-2 mt-1">
+                            <li>纳入省重点流通企业范围的连锁经营企业（超市、便利店、烟酒商店）及其直营门店，或全市范围内持许可证直营门店达到10家以上的连锁经营企业（超市、便利店、烟酒商店）及其直营门店，且2年内无涉烟违法记录的，零售点间隔距离减半；
+                            </li>
+                            <li>取得许可证2年以上的持证零售户，因道路规划、城市建设等客观原因经营场所房屋被政府征收，在原发证机关辖区内办理许可证变更的；取得许可证2年以上的持证零售户，因道路规划、城市建设等客观原因经营场所房屋被政府征收，歇业或许可证注销后6个月内在新经营场所继续经营或在安置后6个月内利用被征收房屋的安置场所继续经营，在原发证机关辖区内重新申领许可证的，零售点间隔距离减半，同一许可证适用本项情形限照顾一次。
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 第十一条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十一条 政府统一规划建设的贸易、服务市场内部，有下列情形之一的，不受本规定第八条第㈠项数量规定的限制：</p>
+                    <div class="regulation-subitem">
+                        <ol class="list-decimal list-inside space-y-2 mt-1">
+                            <li>因道路规划、城市建设等客观原因，市场进行整体搬迁，商户统一安置到另一市场，持证零售户歇业后6个月内，在新经营场所重新申办许可证的；</li>
+                            <li>原持证零售户因市场招投标在原市场内部改变经营场所需重新申办许可证，且歇业申请与新办申请同时被受理的。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 第十二条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十二条 有下列情形之一的，不适用本规定第九条、第十条、第十一条的规定：</p>
+                    <div class="regulation-subitem">
+                        <ol class="list-decimal list-inside space-y-1 mt-1">
+                            <li>经营场所尚不具备卷烟经营条件的；有具体业态限制，经营场所尚未具备该业态经营条件的；</li>
+                            <li>曾被依法取消从事烟草专卖业务资格的；</li>
+                            <li>租用外资商业企业经营场所从事烟草专卖零售业务的；</li>
+                            <li>其他不适用情形。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 第十三条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十三条 有下列情形之一的，不适用本规定第九条第㈢项的规定：</p>
+                    <div class="regulation-subitem">
+                        <ol class="list-decimal list-inside space-y-1 mt-1">
+                            <li>依照本规定第九条第㈥项、第十条第㈠项设置的零售点；</li>
+                            <li>持证零售户因涉烟违法行为被立案查处，尚未结案的；</li>
+                            <li>其他不适用的情形。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 第十四条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十四条 本规定中的“间隔距离”是指拟申请零售点与参照点（其周边最近的零售点）之间的测量距离。</p>
+                    <p class="mt-2">间隔距离的测量标准由发证机关另行规定。</p>
+                </div>
+
+                <!-- 第十五条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十五条
+                        适用本规定第九条、第十条、第十一条申领许可证的，如发证机关无法通过数据共享等形式直接获取相关材料，申请人应当主动配合发证机关的核查工作。</p>
+                </div>
+
+                <!-- 第十六条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十六条 本规定中涉及的中小学校、幼儿园，是指在当地教育行政主管部门核准登记目录内的中小学校、幼儿园。</p>
+                </div>
+
+                <!-- 第十七条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十七条 本规定中涉及的“以上”、“以内”包含本数，“以下”不包含本数。</p>
+                </div>
+
+                <!-- 第十八条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十八条 本规定由绍兴市烟草专卖局负责解释。</p>
+                </div>
+
+                <!-- 第十九条 -->
+                <div class="regulation-article">
+                    <p class="font-semibold text-dark">第十九条
+                        本规定自2022年6月1日起施行。2021年6月1日起施行的《绍兴市烟草制品零售点合理布局规定》（绍烟专[2021]4号）同时废止。遇本规定与上级文件不一致的，以上级文件规定为准。</p>
+                </div>
+
+                <!-- 文末抄送信息 -->
+                <div class="mt-12 pt-6 border-t border-gray-300 text-center text-gray-600">
+                    <p>抄送：绍兴市人民政府。</p>
+                    <p class="mt-2">绍兴市烟草专卖局办公室 2022年4月29日印发</p>
+                </div>
+            </div>
+        </section>
+
         <!-- 资料下载 -->
         <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
             <div class="flex items-center mb-6">
@@ -229,6 +596,14 @@
                     <i class="fa fa-file-pdf-o text-3xl text-red-500 mr-4"></i>
                     <div>
                         <h4 class="font-semibold text-lg">烟草专卖零售许可证申请表</h4>
+                    </div>
+                </a>
+                <!-- 新增下载项：合理布局规定PDF -->
+                <a href="#"
+                    class="guide-card bg-white border border-gray-200 rounded-lg p-4 flex items-center hover:shadow-md">
+                    <i class="fa fa-file-pdf-o text-3xl text-red-500 mr-4"></i>
+                    <div>
+                        <h4 class="font-semibold text-lg">零售点合理布局规定（全文）</h4>
                     </div>
                 </a>
             </div>
