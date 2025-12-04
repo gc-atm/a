@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,6 +30,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50 font-sans text-dark">
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -82,7 +84,7 @@
             </div>
         </section>
 
-        <!-- 行为规范 -->
+        <!-- 行为规范（布局规整版） -->
         <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
             <div class="flex items-center mb-6">
                 <div class="w-12 h-12 bg-integrity/10 rounded-full flex items-center justify-center mr-4">
@@ -90,6 +92,23 @@
                 </div>
                 <h3 class="text-2xl font-bold text-dark">工作人员行为规范及禁令</h3>
             </div>
+
+            <!-- 图片区域 - 居中放置，保持500x300尺寸 -->
+            <div class="flex justify-center mb-8">
+                <div
+                    class="w-[500px] h-[300px] bg-gray-100 rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center shadow-sm">
+                    <img src="004.png" alt="廉洁规范宣传图" class="w-full h-full object-cover">
+                    <!-- 图片加载失败备用提示 -->
+                    <noscript>
+                        <div class="text-gray-500 text-center p-4 text-sm">
+                            <i class="fa fa-picture-o text-4xl mb-2 text-integrity"></i>
+                            <p>廉洁规范宣传图片</p>
+                        </div>
+                    </noscript>
+                </div>
+            </div>
+
+            <!-- 恢复整齐的三栏禁令布局 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- 专卖条线 -->
                 <div class="notice-card bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -132,6 +151,7 @@
                         </li>
                     </ul>
                 </div>
+
                 <!-- 营销条线 -->
                 <div class="notice-card bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
                     <div class="text-center mb-4">
@@ -173,6 +193,7 @@
                         </li>
                     </ul>
                 </div>
+
                 <!-- 物流条线 -->
                 <div class="notice-card bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
                     <div class="text-center mb-4">
@@ -282,8 +303,10 @@
     <footer class="bg-dark text-white py-8 mt-16">
         <div class="container mx-auto px-4 text-center">
             <p class="text-gray-400">&copy; 2024 三码服务平台 - 廉洁公示专区</p>
-            <a href="https://gc-atm.github.io/a/index.html" class="text-integrity hover:underline mt-2 inline-block">返回首页</a>
+            <a href="https://gc-atm.github.io/a/index.html"
+                class="text-integrity hover:underline mt-2 inline-block">返回首页</a>
         </div>
     </footer>
 </body>
+
 </html>
