@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +35,6 @@
         }
     </style>
 </head>
-
 <body class="bg-gray-50 font-sans text-dark">
     <header class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -69,16 +67,13 @@
                 扫描对应二维码，即可获取法制信息、廉洁公示和相关服务，让办事更高效、透明
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#legal"
-                    class="bg-white text-legal px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors shadow-lg">
+                <a href="#legal" class="bg-white text-legal px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors shadow-lg">
                     法制码 <i class="fa fa-arrow-right ml-2"></i>
                 </a>
-                <a href="#integrity"
-                    class="bg-integrity text-white px-6 py-3 rounded-lg font-medium hover:bg-integrity/90 transition-colors shadow-lg">
+                <a href="#integrity" class="bg-integrity text-white px-6 py-3 rounded-lg font-medium hover:bg-integrity/90 transition-colors shadow-lg">
                     廉洁码 <i class="fa fa-arrow-right ml-2"></i>
                 </a>
-                <a href="#service"
-                    class="bg-service text-white px-6 py-3 rounded-lg font-medium hover:bg-service/90 transition-colors shadow-lg">
+                <a href="#service" class="bg-service text-white px-6 py-3 rounded-lg font-medium hover:bg-service/90 transition-colors shadow-lg">
                     服务码 <i class="fa fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -97,9 +92,7 @@
                             </div>
                             <h3 class="text-2xl font-bold text-legal">法制码</h3>
                         </div>
-                        <div class="flex justify-center p-4 bg-gray-50 rounded-lg mb-4" id="legal-qrcode">
-                            <div class="text-gray-400 text-sm">二维码生成中...</div>
-                        </div>
+                        <div class="flex justify-center p-4 bg-gray-50 rounded-lg mb-4" id="legal-qrcode"></div>
                         <p class="text-center text-gray-600 mb-2">
                             <i class="fa fa-mobile text-2xl mr-2"></i> 扫码查看法制相关信息
                         </p>
@@ -115,8 +108,7 @@
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div class="flex items-start">
-                            <div
-                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <div class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                                 <i class="fa fa-file-text-o text-legal"></i>
                             </div>
                             <div>
@@ -125,8 +117,7 @@
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div
-                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <div class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                                 <i class="fa fa-child text-legal"></i>
                             </div>
                             <div>
@@ -135,8 +126,7 @@
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div
-                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <div class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                                 <i class="fa fa-laptop text-legal"></i>
                             </div>
                             <div>
@@ -145,8 +135,7 @@
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div
-                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <div class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                                 <i class="fa fa-book text-legal"></i>
                             </div>
                             <div>
@@ -155,8 +144,7 @@
                             </div>
                         </div>
                         <div class="flex items-start col-span-1 sm:col-span-2 mt-6">
-                            <div
-                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <div class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                                 <i class="fa fa-play-circle text-legal"></i>
                             </div>
                             <div>
@@ -180,14 +168,11 @@
                             </div>
                             <h3 class="text-2xl font-bold text-integrity">廉洁码</h3>
                         </div>
-                        <div class="flex justify-center p-4 bg-gray-50 rounded-lg mb-4" id="integrity-qrcode">
-                            <div class="text-gray-400 text-sm">二维码生成中...</div>
-                        </div>
+                        <div class="flex justify-center p-4 bg-gray-50 rounded-lg mb-4" id="integrity-qrcode"></div>
                         <p class="text-center text-gray-600 mb-2">
                             <i class="fa fa-mobile text-2xl mr-2"></i> 扫码查看廉洁公示信息
                         </p>
-                        <p
-                            class="text-center scan-tip bg-gradient-to-r from-integrity to-green-400 text-sm font-medium">
+                        <p class="text-center scan-tip bg-gradient-to-r from-integrity to-green-400 text-sm font-medium">
                             包含：廉洁承诺、行为规范、监督举报渠道
                         </p>
                     </div>
@@ -203,22 +188,19 @@
                         </h4>
                         <ul class="space-y-4">
                             <li class="flex items-center">
-                                <div
-                                    class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                <div class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                                     <span class="text-integrity font-medium">1</span>
                                 </div>
                                 <span class="text-gray-700">廉洁自律承诺书（含零售市场主体信用承诺、专卖部门权力清单承诺）</span>
                             </li>
                             <li class="flex items-center">
-                                <div
-                                    class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                <div class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                                     <span class="text-integrity font-medium">2</span>
                                 </div>
                                 <span class="text-gray-700">工作人员行为规范及禁令（专卖/营销/物流条线八条禁令）</span>
                             </li>
                             <li class="flex items-center">
-                                <div
-                                    class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                <div class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                                     <span class="text-integrity font-medium">3</span>
                                 </div>
                                 <span class="text-gray-700">监督举报渠道及处理流程（12313热线、线上/线下举报）</span>
@@ -240,9 +222,7 @@
                             </div>
                             <h3 class="text-2xl font-bold text-service">服务码</h3>
                         </div>
-                        <div class="flex justify-center p-4 bg-gray-50 rounded-lg mb-4" id="service-qrcode">
-                            <div class="text-gray-400 text-sm">二维码生成中...</div>
-                        </div>
+                        <div class="flex justify-center p-4 bg-gray-50 rounded-lg mb-4" id="service-qrcode"></div>
                         <p class="text-center text-gray-600 mb-2">
                             <i class="fa fa-mobile text-2xl mr-2"></i> 扫码进入服务网页
                         </p>
@@ -349,24 +329,27 @@
     </footer>
 
     <div class="fixed bottom-6 right-6 md:hidden z-40">
-        <button
-            class="bg-legal text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-legal/90 transition-colors">
+        <button class="bg-legal text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-legal/90 transition-colors">
             <i class="fa fa-qrcode text-xl"></i>
         </button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // 移动端菜单
             const menuBtn = document.getElementById('menuBtn');
             const mobileMenu = document.getElementById('mobileMenu');
             menuBtn.addEventListener('click', function () {
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // 修复二维码生成 - 指向本地实际页面
+            // ========== 已替换为你的 GitHub Pages 地址 ==========
+            const baseUrl = 'https://gc-atm.github.io/a/';
+            
+            // 生成法制码（指向 legal-info.html）
             try {
                 new QRCode(document.getElementById('legal-qrcode'), {
-                    text: window.location.href.replace('index.html', 'legal-info.html'),
+                    text: baseUrl + 'legal-info.html',
                     width: 220,
                     height: 220,
                     colorDark: '#165DFF',
@@ -378,9 +361,10 @@
                 console.error('法制码生成失败：', error);
             }
 
+            // 生成廉洁码（指向 integrity-info.html）
             try {
                 new QRCode(document.getElementById('integrity-qrcode'), {
-                    text: window.location.href.replace('index.html', 'integrity-info.html'),
+                    text: baseUrl + 'integrity-info.html',
                     width: 220,
                     height: 220,
                     colorDark: '#36D399',
@@ -392,9 +376,10 @@
                 console.error('廉洁码生成失败：', error);
             }
 
+            // 生成服务码（指向 service-web.html）
             try {
                 new QRCode(document.getElementById('service-qrcode'), {
-                    text: window.location.href.replace('index.html', 'service-web.html'),
+                    text: baseUrl + 'service-web.html',
                     width: 220,
                     height: 220,
                     colorDark: '#FF7D00',
@@ -413,9 +398,7 @@
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        if (!mobileMenu.classList.contains('hidden')) {
-                            mobileMenu.classList.add('hidden');
-                        }
+                        mobileMenu.classList.add('hidden');
                         window.scrollTo({
                             top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
@@ -438,5 +421,4 @@
         });
     </script>
 </body>
-
 </html>
