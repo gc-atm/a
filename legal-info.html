@@ -39,9 +39,10 @@
             z-index: 9999;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
         .video-modal-content {
-            width: 90%;
+            width: 100%;
             max-width: 800px;
             position: relative;
         }
@@ -52,22 +53,18 @@
             color: white;
             font-size: 30px;
             cursor: pointer;
+            z-index: 10;
         }
-        video {
+        .iframe-video {
             width: 100%;
+            height: 450px;
             border-radius: 8px;
+            border: none;
         }
-        /* 修复封面图占位样式 */
-        .video-cover {
-            background-color: #f3f4f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .video-cover-icon {
-            color: #165DFF;
-            font-size: 48px;
-            opacity: 0.5;
+        @media (max-width: 768px) {
+            .iframe-video {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -172,7 +169,7 @@
             </div>
         </section>
 
-        <!-- 普法视频（修复封面+双播放方式：弹窗+直接跳转） -->
+        <!-- 普法视频（已替换你的 Cloudinary 视频链接） -->
         <section class="mb-12 bg-white rounded-xl p-6 md:p-8 shadow-sm">
             <div class="flex items-center mb-6">
                 <div class="w-12 h-12 bg-legal/10 rounded-full flex items-center justify-center mr-4">
@@ -181,122 +178,117 @@
                 <h3 class="text-2xl font-bold text-dark">普法科普视频</h3>
             </div>
             
-            <!-- 视频弹窗 -->
+            <!-- 视频弹窗（iframe 嵌入，100% 兼容） -->
             <div id="videoModal" class="video-modal">
                 <div class="video-modal-content">
                     <span class="close-modal">&times;</span>
-                    <video id="playVideo" controls playsinline preload="metadata" autoplay="false">
-                        您的浏览器不支持HTML5视频播放，请升级浏览器！
-                    </video>
+                    <iframe id="iframeVideo" class="iframe-video" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <!-- 视频列表（修复封面+新增兜底跳转） -->
+            <!-- 视频列表（1-5 对应你的 Cloudinary 链接） -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- 视频1 -->
                 <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative video-cover h-48 cursor-pointer video-item" data-video="1.mp4">
-                        <!-- 本地封面兜底（无网络图片依赖） -->
-                        <i class="fa fa-film video-cover-icon"></i>
-                        <!-- 播放按钮 -->
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/30">
-                            <i class="fa fa-play-circle text-5xl text-white rounded-full p-4"></i>
-                        </div>
+                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item" 
+                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852612/1_hemmdx.mp4">
+                        <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
                     <div class="p-4">
                         <h4 class="font-semibold text-lg mb-2">警惕烟草证延续诈骗</h4>
                         <p class="text-gray-600 text-sm mb-3">揭秘常见的烟草证延续诈骗手段，教你如何识别和防范</p>
-                        <!-- 双播放方式：弹窗播放 + 直接跳转兜底 -->
                         <div class="flex gap-3">
-                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" data-video="1.mp4">
+                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" 
+                                    data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852612/1_hemmdx.mp4">
                                 <i class="fa fa-play mr-1"></i> 弹窗播放
                             </button>
-                            <a href="https://gc-atm.github.io/a/1.mp4" target="_blank" class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
-                                <i class="fa fa-external-link mr-1"></i> 直接播放
+                            <a href="https://res.cloudinary.com/dfemabrox/video/upload/v1764852612/1_hemmdx.mp4" target="_blank" 
+                               class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
+                                <i class="fa fa-external-link mr-1"></i> 新页播放
                             </a>
                         </div>
                     </div>
                 </div>
                 <!-- 视频2 -->
                 <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative video-cover h-48 cursor-pointer video-item" data-video="2.mp4">
-                        <i class="fa fa-film video-cover-icon"></i>
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/30">
-                            <i class="fa fa-play-circle text-5xl text-white rounded-full p-4"></i>
-                        </div>
+                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item" 
+                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852609/2_fr7tks.mp4">
+                        <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
                     <div class="p-4">
                         <h4 class="font-semibold text-lg mb-2">店铺转让烟草证不可转</h4>
                         <p class="text-gray-600 text-sm mb-3">详解烟草证转让的相关规定，避免违规操作</p>
                         <div class="flex gap-3">
-                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" data-video="2.mp4">
+                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" 
+                                    data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852609/2_fr7tks.mp4">
                                 <i class="fa fa-play mr-1"></i> 弹窗播放
                             </button>
-                            <a href="https://gc-atm.github.io/a/2.mp4" target="_blank" class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
-                                <i class="fa fa-external-link mr-1"></i> 直接播放
+                            <a href="https://res.cloudinary.com/dfemabrox/video/upload/v1764852609/2_fr7tks.mp4" target="_blank" 
+                               class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
+                                <i class="fa fa-external-link mr-1"></i> 新页播放
                             </a>
                         </div>
                     </div>
                 </div>
                 <!-- 视频3 -->
                 <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative video-cover h-48 cursor-pointer video-item" data-video="3.mp4">
-                        <i class="fa fa-film video-cover-icon"></i>
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/30">
-                            <i class="fa fa-play-circle text-5xl text-white rounded-full p-4"></i>
-                        </div>
+                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item" 
+                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852611/3_xdkmyi.mp4">
+                        <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
                     <div class="p-4">
                         <h4 class="font-semibold text-lg mb-2">禁止悬挂许可证复印件</h4>
                         <p class="text-gray-600 text-sm mb-3">解读烟草证展示要求，必须悬挂原件的法律依据</p>
                         <div class="flex gap-3">
-                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" data-video="3.mp4">
+                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" 
+                                    data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852611/3_xdkmyi.mp4">
                                 <i class="fa fa-play mr-1"></i> 弹窗播放
                             </button>
-                            <a href="https://gc-atm.github.io/a/3.mp4" target="_blank" class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
-                                <i class="fa fa-external-link mr-1"></i> 直接播放
+                            <a href="https://res.cloudinary.com/dfemabrox/video/upload/v1764852611/3_xdkmyi.mp4" target="_blank" 
+                               class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
+                                <i class="fa fa-external-link mr-1"></i> 新页播放
                             </a>
                         </div>
                     </div>
                 </div>
                 <!-- 视频4 -->
                 <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative video-cover h-48 cursor-pointer video-item" data-video="4.mp4">
-                        <i class="fa fa-film video-cover-icon"></i>
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/30">
-                            <i class="fa fa-play-circle text-5xl text-white rounded-full p-4"></i>
-                        </div>
+                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item" 
+                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852611/4_y1tx5r.mp4">
+                        <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
                     <div class="p-4">
                         <h4 class="font-semibold text-lg mb-2">亮证经营要求</h4>
                         <p class="text-gray-600 text-sm mb-3">烟草零售亮证经营的具体要求和违规处罚</p>
                         <div class="flex gap-3">
-                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" data-video="4.mp4">
+                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" 
+                                    data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852611/4_y1tx5r.mp4">
                                 <i class="fa fa-play mr-1"></i> 弹窗播放
                             </button>
-                            <a href="https://gc-atm.github.io/a/4.mp4" target="_blank" class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
-                                <i class="fa fa-external-link mr-1"></i> 直接播放
+                            <a href="https://res.cloudinary.com/dfemabrox/video/upload/v1764852611/4_y1tx5r.mp4" target="_blank" 
+                               class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
+                                <i class="fa fa-external-link mr-1"></i> 新页播放
                             </a>
                         </div>
                     </div>
                 </div>
                 <!-- 视频5 -->
                 <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative video-cover h-48 cursor-pointer video-item" data-video="5.mp4">
-                        <i class="fa fa-film video-cover-icon"></i>
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/30">
-                            <i class="fa fa-play-circle text-5xl text-white rounded-full p-4"></i>
-                        </div>
+                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item" 
+                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852612/5_bxaklf.mp4">
+                        <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
                     <div class="p-4">
                         <h4 class="font-semibold text-lg mb-2">无人超市禁售烟草</h4>
                         <p class="text-gray-600 text-sm mb-3">无人售货超市禁止销售烟草制品的相关规定</p>
                         <div class="flex gap-3">
-                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" data-video="5.mp4">
+                            <button class="video-btn bg-legal text-white px-3 py-1 rounded flex items-center text-sm" 
+                                    data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852612/5_bxaklf.mp4">
                                 <i class="fa fa-play mr-1"></i> 弹窗播放
                             </button>
-                            <a href="https://gc-atm.github.io/a/5.mp4" target="_blank" class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
-                                <i class="fa fa-external-link mr-1"></i> 直接播放
+                            <a href="https://res.cloudinary.com/dfemabrox/video/upload/v1764852612/5_bxaklf.mp4" target="_blank" 
+                               class="bg-gray-200 text-dark px-3 py-1 rounded flex items-center text-sm hover:bg-gray-300">
+                                <i class="fa fa-external-link mr-1"></i> 新页播放
                             </a>
                         </div>
                     </div>
@@ -312,64 +304,45 @@
         </div>
     </footer>
 
-    <!-- 视频播放逻辑（优化兼容性） -->
+    <!-- 视频播放逻辑（iframe 版本，无兼容性问题） -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 获取元素
             const modal = document.getElementById('videoModal');
-            const playVideo = document.getElementById('playVideo');
+            const iframeVideo = document.getElementById('iframeVideo');
             const closeBtn = document.querySelector('.close-modal');
-            const videoItems = document.querySelectorAll('.video-item, .video-btn');
-            
-            // 统一播放逻辑（封面/按钮都能触发）
-            videoItems.forEach(item => {
-                item.addEventListener('click', function() {
+            const videoTriggers = document.querySelectorAll('.video-item, .video-btn');
+
+            // 播放视频（iframe 嵌入，绕开浏览器限制）
+            videoTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
                     const videoSrc = this.getAttribute('data-video');
-                    const fullSrc = 'https://gc-atm.github.io/a/' + videoSrc;
-                    
-                    // 重置视频源，避免缓存问题
-                    playVideo.src = '';
-                    playVideo.src = fullSrc;
-                    
-                    // 显示弹窗
+                    // 设置 iframe 源（直接嵌入你的 Cloudinary 视频链接）
+                    iframeVideo.src = videoSrc;
                     modal.style.display = 'flex';
-                    
-                    // 兼容移动端：延迟100ms触发播放（避免交互限制）
-                    setTimeout(() => {
-                        playVideo.play().catch(err => {
-                            console.log('自动播放失败，请点击视频内的播放按钮:', err);
-                        });
-                    }, 100);
                 });
             });
-            
+
             // 关闭弹窗
             closeBtn.addEventListener('click', function() {
                 modal.style.display = 'none';
-                playVideo.pause();
-                playVideo.src = ''; // 清空源，释放资源
+                iframeVideo.src = ''; // 清空 iframe，释放资源
             });
-            
+
             // 点击弹窗外区域关闭
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.style.display = 'none';
-                    playVideo.pause();
-                    playVideo.src = '';
-                }
-            });
-            
-            // 按ESC键关闭弹窗
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.style.display === 'flex') {
-                    modal.style.display = 'none';
-                    playVideo.pause();
-                    playVideo.src = '';
+                    iframeVideo.src = '';
                 }
             });
 
-            // 修复移动端触摸交互
-            document.addEventListener('touchstart', function() {}, { passive: true });
+            // ESC 键关闭
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    modal.style.display = 'none';
+                    iframeVideo.src = '';
+                }
+            });
         });
     </script>
 </body>
