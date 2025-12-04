@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -5,29 +6,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>法制信息 - 三码服务平台</title>
+    <!-- 改用更稳定的CDN地址，同时内置基础样式兜底 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        legal: '#165DFF',
-                        dark: '#1E293B',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                },
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* 基础样式兜底（防止CDN加载失败） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f9fafb;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        .rounded-xl {
+            border-radius: 1rem;
+        }
+
+        .shadow-sm {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .text-legal {
+            color: #165DFF;
+        }
+
+        .bg-legal-10 {
+            background-color: rgba(22, 93, 255, 0.1);
+        }
+
+        .bg-legal-5 {
+            background-color: rgba(22, 93, 255, 0.05);
+        }
+
+        .border-gray-200 {
+            border: 1px solid #e5e7eb;
+        }
+
+        .border-legal-20 {
+            border-bottom: 1px solid rgba(22, 93, 255, 0.2);
+        }
+
+        .law-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .law-table th {
+            background-color: rgba(22, 93, 255, 0.1);
+            color: #165DFF;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+
+        .law-table td {
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            color: #4b5563;
+            line-height: 1.6;
+            vertical-align: top;
+        }
+
+        .law-table-container {
+            overflow-x: auto;
+        }
+
+        .case-list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-list-item::before {
+            content: "";
+            color: #165DFF;
+            margin-right: 0.5rem;
+            margin-top: 0.125rem;
+            flex-shrink: 0;
+        }
+
+        .video-card {
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(22, 93, 255, 0.1);
+        }
+
+        /* 未成年人保护法条文样式（修复对齐） */
+        .law-item {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .law-item {
+                flex-direction: row;
+            }
+
+            .law-num {
+                width: 80px;
+                text-align: right;
+                margin-right: 16px;
+                flex-shrink: 0;
+            }
+
+            .law-text {
+                flex-grow: 1;
             }
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto { content-visibility: auto; }
-            .video-card { transition: all 0.3s ease; }
-            .video-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(22, 93, 255, 0.1); }
+
+        .law-num {
+            font-weight: 600;
+            color: #165DFF;
+            margin-bottom: 8px;
         }
+
+        .law-text {
+            line-height: 1.8;
+            color: #4b5563;
+        }
+
+        .law-subtitle {
+            font-weight: 600;
+            color: #1e293b;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* 电子烟规定样式 */
+        .vape-rule-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .vape-rule-title {
+            font-weight: 600;
+            color: #165DFF;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .vape-rule-title::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background-color: #165DFF;
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+
+        .vape-rule-content {
+            line-height: 1.8;
+            color: #4b5563;
+            padding-left: 12px;
+        }
+
+        .vape-rule-content p {
+            margin-bottom: 0.8rem;
+        }
+
+        .vape-rule-content ul {
+            list-style: decimal;
+            padding-left: 20px;
+            margin-bottom: 0.8rem;
+        }
+
+        .vape-rule-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .vape-rule-subtitle {
+            font-weight: 500;
+            color: #1e293b;
+            margin: 1rem 0 0.5rem 0;
+        }
+
         /* 视频弹窗样式 */
         .video-modal {
             display: none;
@@ -36,17 +212,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 9999;
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
+
         .video-modal-content {
             width: 100%;
             max-width: 800px;
             position: relative;
         }
+
         .close-modal {
             position: absolute;
             top: -40px;
@@ -56,15 +234,89 @@
             cursor: pointer;
             z-index: 10;
         }
+
         .iframe-video {
             width: 100%;
             height: 450px;
             border-radius: 8px;
             border: none;
         }
+
+        /* 法制码问答样式 */
+        .legal-code-qa {
+            line-height: 1.8;
+        }
+
+        .legal-code-qa .qa-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(22, 93, 255, 0.1);
+        }
+
+        .legal-code-qa .qa-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .legal-code-qa .q-title {
+            font-weight: 600;
+            color: #165DFF;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .legal-code-qa .a-content {
+            color: #4b5563;
+            padding-left: 12px;
+        }
+
+        .legal-code-qa .a-content ul {
+            list-style: decimal;
+            padding-left: 20px;
+            margin: 0.8rem 0;
+        }
+
+        .legal-code-qa .a-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-code-qa .a-content ol {
+            list-style: decimal;
+            padding-left: 20px;
+            margin: 0.8rem 0;
+        }
+
+        .legal-code-qa .a-content ol li {
+            margin-bottom: 0.5rem;
+        }
+
         @media (max-width: 768px) {
             .iframe-video {
                 height: 250px;
+            }
+
+            .law-table {
+                font-size: 0.875rem;
+            }
+
+            .law-table th,
+            .law-table td {
+                padding: 0.5rem;
+            }
+
+            .vape-rule-content {
+                padding-left: 8px;
+            }
+
+            .legal-code-qa .a-content {
+                padding-left: 8px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .law-table {
+                min-width: 900px;
             }
         }
     </style>
@@ -86,13 +338,13 @@
         <!-- 许可证信息 -->
         <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
             <div class="flex items-center mb-6">
-                <div class="w-12 h-12 bg-legal/10 rounded-full flex items-center justify-center mr-4">
+                <div class="w-12 h-12 bg-legal-10 rounded-full flex items-center justify-center mr-4">
                     <i class="fa fa-file-text-o text-legal text-2xl"></i>
                 </div>
                 <h3 class="text-2xl font-bold text-dark">许可证相关信息</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="border border-gray-200 rounded-lg p-5">
+                <div class="border-gray-200 rounded-lg p-5">
                     <h4 class="font-semibold text-lg mb-3 text-legal">许可证办理条件</h4>
                     <ul class="space-y-2 text-gray-700">
                         <li class="flex items-start">
@@ -113,7 +365,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="border border-gray-200 rounded-lg p-5">
+                <div class="border-gray-200 rounded-lg p-5">
                     <h4 class="font-semibold text-lg mb-3 text-legal">许可证延续提醒</h4>
                     <ul class="space-y-2 text-gray-700">
                         <li class="flex items-start">
@@ -137,15 +389,15 @@
             </div>
         </section>
 
-        <!-- 未成年人保护 -->
+        <!-- 未成年人保护专区 -->
         <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
             <div class="flex items-center mb-6">
-                <div class="w-12 h-12 bg-legal/10 rounded-full flex items-center justify-center mr-4">
+                <div class="w-12 h-12 bg-legal-10 rounded-full flex items-center justify-center mr-4">
                     <i class="fa fa-child text-legal text-2xl"></i>
                 </div>
                 <h3 class="text-2xl font-bold text-dark">未成年人保护专区</h3>
             </div>
-            <div class="bg-legal/5 rounded-lg p-6">
+            <div class="bg-legal-5 rounded-lg p-6">
                 <h4 class="font-semibold text-xl mb-4 text-legal">禁止向未成年人售烟规定</h4>
                 <p class="text-gray-700 mb-4">
                     根据《中华人民共和国未成年人保护法》、《烟草专卖法》等相关规定，禁止向未成年人出售烟草制品，
@@ -171,16 +423,299 @@
             </div>
         </section>
 
-        <!-- 普法视频（已替换你的 Cloudinary 视频链接） -->
-        <section class="mb-12 bg-white rounded-xl p-6 md:p-8 shadow-sm">
+        <!-- 新增：未成年人保护法相关规定（修复对齐） -->
+        <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
             <div class="flex items-center mb-6">
-                <div class="w-12 h-12 bg-legal/10 rounded-full flex items-center justify-center mr-4">
+                <div class="w-12 h-12 bg-legal-10 rounded-full flex items-center justify-center mr-4">
+                    <i class="fa fa-book text-legal text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark">未成年人保护法相关规定</h3>
+            </div>
+            <div class="bg-legal-5 rounded-lg p-6 md:p-8">
+                <h4 class="font-semibold text-xl mb-5 text-legal border-legal-20 pb-3">《中华人民共和国未成年人保护法》关于烟草的规定</h4>
+
+                <!-- 第十七条 -->
+                <div class="law-item">
+                    <div class="law-num">第十七条</div>
+                    <div class="law-text">
+                        未成年人的父母或者其他监护人不得实施下列行为：<br>
+                        ……<br>
+                        （四）放任、唆使未成年人吸烟（含电子烟，下同）、饮酒、赌博、流浪乞讨或者欺凌他人；<br>
+                        ……
+                    </div>
+                </div>
+
+                <!-- 第五十九条 -->
+                <div class="law-item">
+                    <div class="law-num">第五十九条</div>
+                    <div class="law-text">
+                        学校、幼儿园周边不得设置烟、酒、彩票销售网点。禁止向未成年人销售烟、酒、彩票或者兑付彩票奖金。烟、酒和彩票经营者应当在显著位置设置不向未成年人销售烟、酒或者彩票的标志；对难以判明是否是未成年人的，应当要求其出示身份证件。<br>
+                        任何人不得在学校、幼儿园和其他未成年人集中活动的公共场所吸烟、饮酒。
+                    </div>
+                </div>
+
+                <div class="law-subtitle">《中华人民共和国未成年人保护法》中的违法后果</div>
+
+                <!-- 第一百二十三条 -->
+                <div class="law-item">
+                    <div class="law-num">第一百二十三条</div>
+                    <div class="law-text">
+                        相关经营者违反第五十九条第一款，由文化和旅游、市场监督管理、烟草专卖、公安等部门按照职责分工责令限期改正，给予警告，没收违法所得，可以并处五万元以下罚款；拒不改正或者情节严重的，责令停业整顿或者吊销营业执照、吊销相关许可证，可以并处五万元以上五十万元以下罚款。
+                    </div>
+                </div>
+
+                <!-- 第一百二十四条 -->
+                <div class="law-item">
+                    <div class="law-num">第一百二十四条</div>
+                    <div class="law-text">
+                        违反本法第五十九条第二款规定，在学校、幼儿园和其他未成年人集中活动的公共场所吸烟、饮酒的，由卫生健康、教育、市场监督管理等部门按照职责分工责令改正，给予警告，可以并处五百元以下罚款；场所管理者未及时制止的，由卫生健康、教育、市场监督管理等部门按照职责分工给予警告，并处一万元以下罚款。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 新增：电子烟相关规定 -->
+        <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-legal-10 rounded-full flex items-center justify-center mr-4">
+                    <i class="fa fa-ban text-legal text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark">电子烟相关规定</h3>
+            </div>
+            <div class="bg-legal-5 rounded-lg p-6 md:p-8">
+                <h4 class="font-semibold text-xl mb-5 text-legal border-legal-20 pb-3">《电子烟管理办法》关于烟草的规定</h4>
+
+                <!-- 未成年人相关规定 -->
+                <div class="vape-rule-item">
+                    <div class="vape-rule-title">未成年人相关规定</div>
+                    <div class="vape-rule-content">
+                        <p>第六条：国家和社会加强吸电子烟危害健康的宣传教育，劝阻青少年吸电子烟，禁止中小学生吸电子烟。</p>
+                        <p>第十八条第三款：普通中小学、特殊教育学校、中等职业学校、专门学校、幼儿园周边不得设置电子烟产品销售网点。</p>
+                        <p>第二十二条：禁止向未成年人出售电子烟产品。电子烟经营者应当在显著位置设置不向未成年人销售电子烟的标志；对难以判明是否是未成年人的，应当要求其出示身份证件。</p>
+                    </div>
+                </div>
+
+                <!-- 生产相关规定 -->
+                <div class="vape-rule-item">
+                    <div class="vape-rule-title">生产相关规定</div>
+                    <div class="vape-rule-content">
+                        <p>第八条：设立电子烟生产企业（含产品生产、代加工、品牌持有企业等，下同）、雾化物生产企业和电子烟用烟碱生产企业等，应当报经国务院烟草专卖行政主管部门审查同意后，方可按照国家有关规定批准立项。上述企业设立必须经国务院烟草专卖行政主管部门批准，取得烟草专卖生产企业许可证，并经市场监督管理部门核准登记；其分立、合并、撤销，必须经国务院烟草专卖行政主管部门批准，并向市场监督管理部门办理相关登记手续。未取得烟草专卖生产企业许可证的，市场监督管理部门不予核准登记。
+                        </p>
+                        <p>第九条：从事电子烟产品、雾化物、电子烟用烟碱等生产经营活动，取得烟草专卖生产企业许可证，应当具备下列条件:</p>
+                        <ul>
+                            <li>（一）有与生产相适应的资金；</li>
+                            <li>（二）有生产所需技术和设备条件；</li>
+                            <li>（三）符合国家电子烟产业政策要求；</li>
+                            <li>（四）国务院烟草专卖行政主管部门规定的其他条件。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 销售相关规定 -->
+                <div class="vape-rule-item">
+                    <div class="vape-rule-title">销售相关规定</div>
+                    <div class="vape-rule-content">
+                        <p>第十八条：取得烟草专卖零售许可证从事电子烟零售业务，应当具备下列条件：</p>
+                        <ul>
+                            <li>（一）有与经营电子烟零售业务相适应的资金；</li>
+                            <li>（二）有与住所相独立的固定经营场所；</li>
+                            <li>（三）符合当地电子烟零售点合理布局的要求；</li>
+                            <li>（四）国务院烟草专卖行政主管部门规定的其他条件。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 法律后果 -->
+                <div class="vape-rule-item">
+                    <div class="vape-rule-title">法律后果</div>
+                    <div class="vape-rule-content">
+                        <p class="vape-rule-subtitle">《烟草专卖法实施条例》第六十五条</p>
+                        <p>明确电子烟参照卷烟相关规定执行。这意味着电子烟的生产、销售、运输等环节需遵循烟草专卖相关管理要求，未经许可从事相关经营活动，会触发对应违法责任。</p>
+
+                        <p class="vape-rule-subtitle">《电子烟管理办法》</p>
+                        <p>该办法规定从事电子烟零售需取得烟草专卖零售许可证，交易限于全国统一电子烟交易管理平台；禁止向未成年人出售电子烟，禁止销售除烟草口味外的调味电子烟等。违反这些规定，可能面临责令整改、没收违法所得、罚款等行政处罚，若情节严重还可能涉嫌刑事犯罪。
+                        </p>
+
+                        <p class="vape-rule-subtitle">《刑法》第二百二十五条（非法经营罪）</p>
+                        <p>未取得烟草专卖相关许可证，非法生产、销售电子烟，扰乱市场秩序且情节严重的，会以此罪定罪处罚。情节严重的，处五年以下有期徒刑或拘役，并处相应罚金；情节特别严重的，处五年以上有期徒刑，同时处以罚金或没收财产。
+                        </p>
+
+                        <p class="vape-rule-subtitle">《刑法》第三百四十七条（走私、贩卖、运输、制造毒品罪）</p>
+                        <p>若电子烟添加依托咪酯、异丙帕酯等列管精神药品，贩卖此类电子烟即构成此罪。无论涉毒数量多少，都需追究刑责，最高可判处死刑。</p>
+
+                        <p class="vape-rule-subtitle">《治安管理处罚法》</p>
+                        <p>《治安管理处罚法》第七十二条吸食添加依托咪酯等列管精神药品的电子烟，属于吸毒行为。对此可处十日以上十五日以下拘留，并处二千元以下罚款；情节较轻的，处五日以下拘留或者五百元以下罚款。
+                        </p>
+
+                        <p class="vape-rule-subtitle">《刑法》第三百四十八条、第三百五十四条</p>
+                        <p>非法持有含列管精神药品的电子烟，达到相应数量标准会构成非法持有毒品罪；容留他人吸食此类电子烟的，构成容留他人吸毒罪，两罪均会被判处有期徒刑、拘役或管制，并处相应罚金。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 典型案例板块 -->
+        <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-legal-10 rounded-full flex items-center justify-center mr-4">
+                    <i class="fa fa-gavel text-legal text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark">典型案例</h3>
+            </div>
+            <div class="bg-legal-5 rounded-lg p-6 md:p-8">
+                <h4 class="font-semibold text-xl mb-5 text-legal border-legal-20 pb-3">向未成年人销售电子烟典型案例</h4>
+
+                <div class="space-y-5 text-gray-700 leading-relaxed">
+                    <!-- 案件来源 -->
+                    <div class="case-list-item">
+                        <div class="flex-1">
+                            <span class="font-medium">案件来源：</span>
+                            2022 年 8 月，未成年人家长举报，称孩子在校吸食电子烟，疑似从当事人处购买
+                        </div>
+                    </div>
+
+                    <!-- 案件经过 -->
+                    <div class="case-list-item">
+                        <div class="flex-1">
+                            <span class="font-medium">案件经过：</span>
+                            2022 年 4 月，执法人员对该公司经营场所检查，现场发现悦刻、YOOZ、喜雾等品牌电子烟，经营者配合检查无异议。经核实，2022 年 1 月，17 周岁未成年人在该公司购买 1
+                            套悦刻电子烟（含 1 支烟杆 + 1 颗烟弹），支付 49 元（微信付款）。交易时，经营者未查验未成年人身份。违法所得：此次违法销售的违法所得为 7 元。
+                        </div>
+                    </div>
+
+                    <!-- 核心证据 -->
+                    <div class="case-list-item">
+                        <div class="flex-1">
+                            <span class="font-medium">核心证据：</span>
+                            <ol class="list-decimal pl-5 mt-2 space-y-1">
+                                <li>现场检查笔录、经营场所电子烟摆放照片，证实经营电子烟事实；</li>
+                                <li>交易账单、支付记录，佐证销售金额与付款方式；</li>
+                                <li>经营者询问笔录，确认向未成年人售烟行为；</li>
+                                <li>未成年人身份凭证、询问笔录，明确购买人未成年身份及购烟经过；</li>
+                                <li>经营者相关资质文件，证明其具备合法经营基础但存在违法操作。</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- 处罚依据与结果 -->
+                    <div class="case-list-item">
+                        <div class="flex-1">
+                            <span class="font-medium">处罚依据与结果：</span>
+                            <ol class="list-decimal pl-5 mt-2 space-y-1">
+                                <li>违法定性：违反《中华人民共和国未成年人保护法》第五十九条第一款（禁止向未成年人售烟，对疑似未成年人需查验证件）。</li>
+                                <li>处罚依据：依据《中华人民共和国未成年人保护法》第一百二十三条及《中华人民共和国行政处罚法》第二十八条第一款。</li>
+                            </ol>
+                            <div class="mt-2">
+                                <span class="font-medium">处罚结果：</span>
+                                <ol class="list-decimal pl-5 mt-1 space-y-1">
+                                    <li>责令限期改正，给予警告；</li>
+                                    <li>没收违法所得 7 元，罚款 4000 元，罚没款合计 4007 元（需 15 日内缴纳，逾期将加处罚款或申请强制执行）。</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 权利救济 -->
+                    <div class="case-list-item">
+                        <div class="flex-1">
+                            <span class="font-medium">五、权利救济：</span>
+                        </div>
+                    </div>
+
+                    <!-- 警示意义 -->
+                    <div class="case-list-item">
+                        <div class="flex-1">
+                            <span class="font-medium">警示意义：</span>
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>持烟草零售许可证经营者，需同时合规销售电子烟，严格履行未成年人身份查验义务；</li>
+                                <li>向未成年人售烟（含电子烟）属法律明确禁止行为，切勿心存侥幸；</li>
+                                <li>即使经营主体有其他主业（如特产销售），涉及烟草制品销售仍需参照 “烟酒商店” 业态合规要求，强化合规意识。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 涉烟违法行为的法律责任 -->
+        <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-legal-10 rounded-full flex items-center justify-center mr-4">
+                    <i class="fa fa-balance-scale text-legal text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark">涉烟违法行为的法律责任</h3>
+            </div>
+            <div class="bg-legal-5 rounded-lg p-6 md:p-8">
+                <div class="law-table-container">
+                    <table class="law-table">
+                        <thead>
+                            <tr>
+                                <th width="15%">违法类型</th>
+                                <th width="35%">法律条文</th>
+                                <th width="50%">实施条例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 擅自收购卷烟 -->
+                            <tr>
+                                <td class="font-medium">擅自收购卷烟</td>
+                                <td>
+                                    擅自收购烟叶的，由烟草专卖行政主管部门处以罚款，并按照查获地省级烟草专卖行政主管部门出具的上年度烟叶平均收购价格的百分之七十收购违法收购的烟叶；数量巨大的，没收违法收购的烟叶和违法所得。
+                                </td>
+                                <td>
+                                    <ol class="list-decimal pl-5 mt-1 space-y-1">
+                                        <li>擅自收购烟叶的，可以处非法收购烟叶价值20%以上50%以下的罚款，并按照查获地省级烟草专卖行政主管部门出具的上年度烟叶平均收购价格的70%收购违法收购的烟叶；
+                                        </li>
+                                        <li>擅自收购烟叶1000公斤以上的，依法没收其违法收购的烟叶和违法所得。</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                            <!-- 无证运输 -->
+                            <tr style="background-color: #f9fafb;">
+                                <td class="font-medium">无证运输</td>
+                                <td>
+                                    1.
+                                    无准运证或者超过准运证规定的数量托运或者自运烟草专卖品的，由烟草专卖行政主管部门处以罚款，可以按照查获地省级烟草专卖行政主管部门出具的上年度烟叶平均收购价格的百分之七十收购违法运输的烟叶，按照市场批发价格的百分之七十收购违法运输的除烟叶外的其他烟草专卖品；情节严重的，没收违法运输的烟草专卖品和违法所得。<br><br>
+                                    2. 承运人明知是烟草专卖品而为无准运证的单位、个人运输的，由烟草专卖行政主管部门没收违法所得，并处罚款。<br><br>
+                                    3. 超过国家规定的限量异地携带烟叶、烟草制品，数量较大的，依照第一款的规定处理。
+                                </td>
+                                <td>
+                                    <ol class="list-decimal pl-5 mt-1 space-y-1">
+                                        <li>无准运证或者超过准运证规定的数量托运或者自运烟草专卖品的，处以违法运输的烟草专卖品价值20%以上50%以下的罚款，可以按照查获地省级烟草专卖行政主管部门出具的上年度烟叶平均收购价格的70%收购违法运输的烟叶，以及按照市场批发价格的70%收购违法运输的除烟叶外的其他烟草专卖品。
+                                        </li>
+                                        <li>有下列情形之一的，没收违法运输的烟草专卖品和违法所得：
+                                            <ol class="list-alpha pl-5 mt-1 space-y-1">
+                                                <li>非法运输的烟草专卖品价值超过5万元或者运输卷烟数量超过100件（每1万支为1件）的；</li>
+                                                <li>被烟草专卖行政主管部门处罚两次以上的；</li>
+                                                <li>抗拒烟草专卖行政主管部门的监督检查人员依法实施检查的；</li>
+                                                <li>非法运输走私烟草专卖品的；</li>
+                                                <li>运输无烟草专卖生产企业许可证的企业生产的烟草专卖品的；</li>
+                                                <li>利用伪装非法运输烟草专卖品的；</li>
+                                                <li>利用特种车辆运输烟草专卖品逃避检查的；</li>
+                                                <li>其他非法运输行为，情节严重的。</li>
+                                            </ol>
+                                        </li>
+                                        <li>承运人明知是烟草专卖品而为无准运证的单位、个人运输的，没收违法所得，可以并处违法运输的烟草专卖品价值10%以上20%以下的罚款。</li>
+                                        <li>邮寄、异地携带烟叶、烟草制品超过国务院有关部门规定的限量1倍以上的，依照本条第（一）项的规定处罚。</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 普法视频 -->
+        <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-legal-10 rounded-full flex items-center justify-center mr-4">
                     <i class="fa fa-play-circle text-legal text-2xl"></i>
                 </div>
                 <h3 class="text-2xl font-bold text-dark">普法科普视频</h3>
             </div>
 
-            <!-- 视频弹窗（iframe 嵌入，100% 兼容） -->
+            <!-- 视频弹窗 -->
             <div id="videoModal" class="video-modal">
                 <div class="video-modal-content">
                     <span class="close-modal">&times;</span>
@@ -188,11 +723,11 @@
                 </div>
             </div>
 
-            <!-- 视频列表（1-5 对应你的 Cloudinary 链接） -->
+            <!-- 视频列表 -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- 视频1 -->
-                <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item"
+                <div class="video-card bg-white border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="relative bg-legal-10 h-48 flex items-center justify-center cursor-pointer video-item"
                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852612/1_hemmdx.mp4">
                         <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
@@ -213,8 +748,8 @@
                     </div>
                 </div>
                 <!-- 视频2 -->
-                <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item"
+                <div class="video-card bg-white border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="relative bg-legal-10 h-48 flex items-center justify-center cursor-pointer video-item"
                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852609/2_fr7tks.mp4">
                         <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
@@ -235,8 +770,8 @@
                     </div>
                 </div>
                 <!-- 视频3 -->
-                <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item"
+                <div class="video-card bg-white border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="relative bg-legal-10 h-48 flex items-center justify-center cursor-pointer video-item"
                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852611/3_xdkmyi.mp4">
                         <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
@@ -257,8 +792,8 @@
                     </div>
                 </div>
                 <!-- 视频4 -->
-                <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item"
+                <div class="video-card bg-white border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="relative bg-legal-10 h-48 flex items-center justify-center cursor-pointer video-item"
                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852611/4_y1tx5r.mp4">
                         <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
@@ -279,8 +814,8 @@
                     </div>
                 </div>
                 <!-- 视频5 -->
-                <div class="video-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="relative bg-legal/10 h-48 flex items-center justify-center cursor-pointer video-item"
+                <div class="video-card bg-white border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="relative bg-legal-10 h-48 flex items-center justify-center cursor-pointer video-item"
                         data-video="https://res.cloudinary.com/dfemabrox/video/upload/v1764852612/5_bxaklf.mp4">
                         <i class="fa fa-play-circle text-5xl text-legal"></i>
                     </div>
@@ -302,6 +837,108 @@
                 </div>
             </div>
         </section>
+
+        <!-- 新增：法制码相关问题解答 -->
+        <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-legal-10 rounded-full flex items-center justify-center mr-4">
+                    <i class="fa fa-question-circle text-legal text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark">法制码相关问题解答</h3>
+            </div>
+            <div class="bg-legal-5 rounded-lg p-6 md:p-8 legal-code-qa">
+                <!-- Q1 -->
+                <div class="qa-item">
+                    <div class="q-title">Q1：什么情况下烟草执法人员可以当场作出行政处罚决定(简易程序)？</div>
+                    <div class="a-content">
+                        A:违法事实确凿并有法定依据
+                        <ul>
+                            <li>对公民处以200元以下</li>
+                            <li>对法人或者其他组织处以3000元以下罚款</li>
+                            <li>警告的行政处罚的</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="qa-item">
+                    <div class="q-title">Q2:当场作出行政处罚决定的执法程序是如何？</div>
+                    <div class="a-content">
+                        A：执法人员依法当场作出行政处罚决定的，应当主动向当事人出示执法证件，填写预定格式、统一编号的烟草专卖行政处罚决定书，并当场交当事人签收。当事人拒绝签收的，执法人员应当在行政处罚决定书上注明情况。
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="qa-item">
+                    <div class="q-title">Q3：普通程序的立案时间？</div>
+                    <div class="a-content">
+                        A:自发现违法线索或者收到举报、其他机关移送、上级机关交办的材料之日起7日内予以核查并决定是否立案
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="qa-item">
+                    <div class="q-title">Q4:普通程序的执法流程？</div>
+                    <div class="a-content">
+                        A：
+                        <ol>
+                            <li>必须有2名及以上人员出示执法证件。</li>
+                            <li>提取物证应当当场清点，出具物品清单并由执法人员、当事人签名或者以其他方式确认。</li>
+                            <li>当事人拒绝确认或者不在场的，应当有2名以上见证人在场确认；</li>
+                            <li>见证人不足2名或者拒绝确认的，执法人员应当在物品清单上注明情况并签名。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="qa-item">
+                    <div class="q-title">Q5：什么情况下可以对卷烟等有关证据进行先行登记保存？</div>
+                    <div class="a-content">
+                        A:在证据可能灭失或者以后难以取得的情况下，经本烟草专卖局负责人批准，可以依法对与涉嫌违法行为有关的证据进行先行登记保存。<br>
+                        对于依法先行登记保存的证据，应当根据情况在7日内采取下列措施：
+                        <ol>
+                            <li>及时采取复制、拍照、录像等证据保全措施；</li>
+                            <li>需要鉴定的，及时送交有关机构鉴定并告知当事人所需时间；</li>
+                            <li>依法应当移送其他有关部门处理的，作出移送决定并书面告知当事人；</li>
+                            <li>违法事实不成立，或者依法可以不予行政处罚的，决定解除先行登记保存措施并告知当事人。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="qa-item">
+                    <div class="q-title">Q6：案子办理的最长期限是多久？</div>
+                    <div class="a-content">
+                        A:烟草专卖局应当自行政处罚案件立案之日起90日内作出行政处罚决定。90日内不能作出的，经本烟草专卖局负责人批准，可以延长30日。听证、鉴定、公告等时间不计入前款规定的期限。
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="qa-item">
+                    <div class="q-title">Q7:什么情况下烟草专卖局应当组织听证？</div>
+                    <div class="a-content">
+                        A：
+                        <ol>
+                            <li>1万元以上的罚款；</li>
+                            <li>没收较大数额的违法所得或者违法烟草专卖品；</li>
+                            <li>取消从事烟草专卖业务的资格、吊销许可证；</li>
+                            <li>责令停产停业、责令关闭；</li>
+                            <li>其他较重的行政处罚；</li>
+                            <li>法律、法规、规章规定的其他情形。</li>
+                        </ol>
+                        不得因听证加重处罚，不承担费用
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="qa-item">
+                    <div class="q-title">Q8:当事人对烟草专卖局作出的行政处罚决定不服的有什么救济方式？</div>
+                    <div class="a-content">
+                        A：可以自接到行政处罚决定书之日起60日内，向其上一级烟草专卖局申请复议；当事人也可以自接到行政处罚决定书之日起15日内直接向人民法院提起行政诉讼。
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-dark text-white py-8 mt-16">
@@ -312,7 +949,7 @@
         </div>
     </footer>
 
-    <!-- 视频播放逻辑（iframe 版本，无兼容性问题） -->
+    <!-- 视频播放逻辑 -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const modal = document.getElementById('videoModal');
@@ -320,11 +957,10 @@
             const closeBtn = document.querySelector('.close-modal');
             const videoTriggers = document.querySelectorAll('.video-item, .video-btn');
 
-            // 播放视频（iframe 嵌入，绕开浏览器限制）
+            // 播放视频
             videoTriggers.forEach(trigger => {
                 trigger.addEventListener('click', function () {
                     const videoSrc = this.getAttribute('data-video');
-                    // 设置 iframe 源（直接嵌入你的 Cloudinary 视频链接）
                     iframeVideo.src = videoSrc;
                     modal.style.display = 'flex';
                 });
@@ -333,7 +969,7 @@
             // 关闭弹窗
             closeBtn.addEventListener('click', function () {
                 modal.style.display = 'none';
-                iframeVideo.src = ''; // 清空 iframe，释放资源
+                iframeVideo.src = '';
             });
 
             // 点击弹窗外区域关闭
