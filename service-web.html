@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +31,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50 font-sans text-dark">
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -43,7 +45,7 @@
     </header>
 
     <main class="container mx-auto px-4 py-12">
-        <!-- 办事指南长图 -->
+        <!-- 办事指南长图（删除右侧重复盒子 + 替换下方图片为002.png） -->
         <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
             <div class="flex items-center mb-6">
                 <div class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4">
@@ -52,10 +54,10 @@
                 <h3 class="text-2xl font-bold text-dark">办事指南长图</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- 许可证新办 -->
+                <!-- 保留左侧“许可证新办”盒子（图片为001.png） -->
                 <div class="guide-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
                     <div class="bg-gray-100 h-60 flex items-center justify-center">
-                        <img src="https://picsum.photos/800/400?random=1" alt="许可证新办流程长图" class="w-full h-full object-cover">
+                        <img src="001.png" alt="许可证新办流程长图" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h4 class="font-semibold text-lg mb-2 text-service">烟草专卖零售许可证新办流程</h4>
@@ -65,23 +67,11 @@
                         </a>
                     </div>
                 </div>
-                <!-- 许可证延续 -->
-                <div class="guide-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <div class="bg-gray-100 h-60 flex items-center justify-center">
-                        <img src="https://picsum.photos/800/400?random=2" alt="许可证延续流程长图" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4">
-                        <h4 class="font-semibold text-lg mb-2 text-service">烟草专卖零售许可证延续流程</h4>
-                        <p class="text-gray-600 text-sm mb-3">详解许可证延续的条件、材料和办理步骤，避免错过延续期限</p>
-                        <a href="#" class="text-service flex items-center hover:underline">
-                            查看高清长图 <i class="fa fa-download ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- 片区履职专刊 -->
-                <div class="guide-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm md:col-span-2">
+                <!-- 下方“片区履职专刊”盒子（图片替换为002.png） -->
+                <div
+                    class="guide-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm md:col-span-2">
                     <div class="bg-gray-100 h-80 flex items-center justify-center">
-                        <img src="https://picsum.photos/1200/500?random=3" alt="片区履职专刊长图" class="w-full h-full object-cover">
+                        <img src="002.png" alt="片区履职专刊长图" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h4 class="font-semibold text-lg mb-2 text-service">片区履职专班服务指南专刊</h4>
@@ -106,7 +96,8 @@
                 <!-- 新办说明 -->
                 <div class="bg-service/5 rounded-lg p-6">
                     <h4 class="font-semibold text-xl mb-4 text-service flex items-center">
-                        <span class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">1</span>
+                        <span
+                            class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">1</span>
                         烟草专卖零售许可证新办
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -152,7 +143,8 @@
                 <!-- 延续说明 -->
                 <div class="bg-service/5 rounded-lg p-6">
                     <h4 class="font-semibold text-xl mb-4 text-service flex items-center">
-                        <span class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">2</span>
+                        <span
+                            class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">2</span>
                         烟草专卖零售许可证延续
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -194,7 +186,8 @@
                 <!-- 变更说明 -->
                 <div class="bg-service/5 rounded-lg p-6">
                     <h4 class="font-semibold text-xl mb-4 text-service flex items-center">
-                        <span class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">3</span>
+                        <span
+                            class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">3</span>
                         烟草专卖零售许可证变更/补办
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -231,7 +224,24 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- 下载项1 -->
-                <a href="#" class="guide-card bg-white border border-gray-200 rounded-lg p-4 flex items-center hover:shadow-md">
+                <a href="#"
+                    class="guide-card bg-white border border-gray-200 rounded-lg p-4 flex items-center hover:shadow-md">
                     <i class="fa fa-file-pdf-o text-3xl text-red-500 mr-4"></i>
                     <div>
-                        <h4 class="font-semibold text-lg">烟草专卖零售许可证申请表</h
+                        <h4 class="font-semibold text-lg">烟草专卖零售许可证申请表</h4>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2024 三码服务平台 - 便民服务专区</p>
+            <a href="https://gc-atm.github.io/a/index.html"
+                class="text-service hover:underline mt-2 inline-block">返回首页</a>
+        </div>
+    </footer>
+</body>
+
+</html>
