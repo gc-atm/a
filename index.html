@@ -14,7 +14,554 @@
             theme: {
                 extend: {
                     colors: {
+                        legal: '#165DFF',<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三码服务平台 - 法制·廉洁·服务</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
                         legal: '#165DFF',
+                        integrity: '#36D399',
+                        service: '#FF7D00',
+                        dark: '#1E293B',
+                        light: '#F8FAFC',
+                        tobacco: '#1E40AF' // 新增烟草专区主色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto { content-visibility: auto; }
+            .card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.02); }
+            .card-shadow-hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05); }
+            .qrcode-hover { transition: all 0.3s ease; }
+            .qrcode-hover:hover { transform: translateY(-8px); box-shadow: var(--tw-shadow-xl); }
+            .scan-tip { background: linear-gradient(to right, var(--tw-gradient-stops)); background-clip: text; -webkit-background-clip: text; color: transparent; }
+            .text-balance { text-wrap: balance; }
+            .section-fade { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+            .section-fade.active { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans text-dark antialiased">
+    <!-- 头部导航 - 优化阴影和过渡 -->
+    <header class="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center">
+                    <i class="fa fa-shield text-legal text-xl"></i>
+                </div>
+                <h1 class="text-xl md:text-2xl font-bold text-dark tracking-tight">三码服务平台</h1>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#legal"
+                    class="text-gray-600 hover:text-legal transition-colors duration-200 font-medium">法制码</a>
+                <a href="#integrity"
+                    class="text-gray-600 hover:text-integrity transition-colors duration-200 font-medium">廉洁码</a>
+                <a href="#service"
+                    class="text-gray-600 hover:text-service transition-colors duration-200 font-medium">服务码</a>
+                <a href="tobacco.html"
+                    class="text-gray-600 hover:text-tobacco transition-colors duration-200 font-medium">烟草专区</a>
+            </nav>
+            <button class="md:hidden text-gray-600 focus:outline-none transition-transform duration-200 hover:rotate-90"
+                id="menuBtn">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <div class="md:hidden hidden bg-white shadow-lg absolute w-full rounded-b-lg overflow-hidden" id="mobileMenu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-1">
+                <a href="#legal"
+                    class="text-gray-600 hover:text-legal py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">法制码</a>
+                <a href="#integrity"
+                    class="text-gray-600 hover:text-integrity py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">廉洁码</a>
+                <a href="#service"
+                    class="text-gray-600 hover:text-service py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">服务码</a>
+                <a href="tobacco.html"
+                    class="text-gray-600 hover:text-tobacco py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">烟草专区</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区 - 优化渐变和动效 -->
+    <section
+        class="bg-gradient-to-r from-legal via-legal/90 to-blue-700 py-20 md:py-28 text-white relative overflow-hidden">
+        <!-- 背景装饰 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-10 left-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-60 h-60 bg-white/5 rounded-full blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-4 text-center relative z-10 animate-fade-in">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-balance">便捷服务 码上可达</h2>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto opacity-90 mb-10 text-balance">
+                扫描对应二维码，即可获取法制信息、廉洁公示和相关服务，让办事更高效、透明
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+                <a href="#legal"
+                    class="bg-white text-legal px-7 py-3.5 rounded-lg font-medium hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    法制码 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#integrity"
+                    class="bg-integrity text-white px-7 py-3.5 rounded-lg font-medium hover:bg-integrity/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    廉洁码 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#service"
+                    class="bg-service text-white px-7 py-3.5 rounded-lg font-medium hover:bg-service/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    服务码 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+                <a href="tobacco.html"
+                    class="bg-tobacco text-white px-7 py-3.5 rounded-lg font-medium hover:bg-tobacco/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    烟草专区 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-16 md:py-20">
+        <!-- 法制码区域 - 优化卡片和滚动动画 -->
+        <section id="legal" class="mb-28 section-fade">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-dark leading-tight">法制信息 一键获取</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                        扫描法制码，即可查看许可证信息、未成年人相关规定、电子业务指南及典型案例，让法律知识触手可及，办事有依据、维权有方向。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-file-text-o text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">许可证信息</h4>
+                                <p class="text-gray-600 text-sm">相关资质证明及法律法规依据</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-child text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">未成年人保护</h4>
+                                <p class="text-gray-600 text-sm">专项规定及保护措施说明</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-laptop text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">电子业务指南</h4>
+                                <p class="text-gray-600 text-sm">线上办理流程及操作说明</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-book text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">典型案例库</h4>
+                                <p class="text-gray-600 text-sm">相关法律案例及解读分析</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start col-span-1 sm:col-span-2 mt-2 p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-play-circle text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">普法科普视频</h4>
+                                <p class="text-gray-600 text-sm">
+                                    含5期烟草合规短视频：警惕烟草证延续诈骗、店铺转让烟草证不可转、禁止悬挂许可证复印件、亮证经营要求、无人超市禁售烟草</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="bg-white rounded-2xl p-8 card-shadow qrcode-hover">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-legal/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-gavel text-legal text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-legal">法制码</h3>
+                        </div>
+                        <div class="flex justify-center p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100"
+                            id="legal-qrcode"></div>
+                        <p class="text-center text-gray-600 mb-3">
+                            <i class="fa fa-mobile text-2xl mr-2 text-legal"></i> 扫码查看法制相关信息
+                        </p>
+                        <p class="text-center scan-tip bg-gradient-to-r from-legal to-blue-400 text-sm font-medium">
+                            包含：许可证、未成年人保护、电子业务、典型案例、普法视频
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 廉洁码区域 - 优化背景和卡片 -->
+        <section id="integrity" class="mb-28 section-fade">
+            <div class="bg-gray-100/80 rounded-3xl p-8 md:p-12 backdrop-blur-sm">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-16">
+                    <div class="w-full md:w-1/2">
+                        <div class="bg-white rounded-2xl p-8 card-shadow qrcode-hover">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-12 h-12 bg-integrity/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-balance-scale text-integrity text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-integrity">廉洁码</h3>
+                            </div>
+                            <div class="flex justify-center p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100"
+                                id="integrity-qrcode"></div>
+                            <p class="text-center text-gray-600 mb-3">
+                                <i class="fa fa-mobile text-2xl mr-2 text-integrity"></i> 扫码查看廉洁公示信息
+                            </p>
+                            <p
+                                class="text-center scan-tip bg-gradient-to-r from-integrity to-green-400 text-sm font-medium">
+                                包含：廉洁承诺、行为规范、监督举报渠道
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-dark leading-tight">廉洁公示 阳光透明
+                        </h3>
+                        <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                            扫描廉洁码，即可查看三份廉洁公示长图，包括廉洁承诺、行为规范和监督举报方式，主动接受社会各界监督，保障服务公平公正。
+                        </p>
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                            <h4 class="font-semibold text-xl mb-6 flex items-center">
+                                <i class="fa fa-check-circle text-integrity mr-3 text-xl"></i> 廉洁公示内容
+                            </h4>
+                            <ul class="space-y-5">
+                                <li
+                                    class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                                    <div
+                                        class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                                        <span class="text-integrity font-medium">1</span>
+                                    </div>
+                                    <span class="text-gray-700">廉洁自律承诺书（含零售市场主体信用承诺、专卖部门权力清单承诺）</span>
+                                </li>
+                                <li
+                                    class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                                    <div
+                                        class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                                        <span class="text-integrity font-medium">2</span>
+                                    </div>
+                                    <span class="text-gray-700">工作人员行为规范及禁令（专卖/营销/物流条线八条禁令）</span>
+                                </li>
+                                <li
+                                    class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                                    <div
+                                        class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                                        <span class="text-integrity font-medium">3</span>
+                                    </div>
+                                    <span class="text-gray-700">监督举报渠道及处理流程（12313热线、线上/线下举报）</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务码区域 - 优化布局和动效 -->
+        <section id="service" class="mb-20 section-fade">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2">
+                    <div class="bg-white rounded-2xl p-8 card-shadow qrcode-hover">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-handshake-o text-service text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-service">服务码</h3>
+                        </div>
+                        <div class="flex justify-center p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100"
+                            id="service-qrcode"></div>
+                        <p class="text-center text-gray-600 mb-3">
+                            <i class="fa fa-mobile text-2xl mr-2 text-service"></i> 扫码进入服务网页
+                        </p>
+                        <p class="text-center scan-tip bg-gradient-to-r from-service to-orange-400 text-sm font-medium">
+                            包含：办事指南、流程长图、资料下载、片区履职专班
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-dark leading-tight">便民服务 一网通办</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                        扫描服务码，即可进入包含长图展示的服务网页，获取详细的办事指南、流程说明和相关下载资料，让服务更贴心、办事更省心。
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm flex items-center border border-gray-100 hover:card-shadow-hover transition-all duration-200">
+                            <div
+                                class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-file-image-o text-service text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">长图展示指南</h4>
+                                <p class="text-gray-600 text-sm">直观清晰的办事流程图解（含片区履职专刊）</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm flex items-center border border-gray-100 hover:card-shadow-hover transition-all duration-200">
+                            <div
+                                class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-list-alt text-service text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">详细办事说明</h4>
+                                <p class="text-gray-600 text-sm">许可证新办/延续等step-by-step操作指引</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm flex items-center border border-gray-100 hover:card-shadow-hover transition-all duration-200">
+                            <div
+                                class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-download text-service text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">资料下载中心</h4>
+                                <p class="text-gray-600 text-sm">相关表格及参考资料</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm flex items-center border border-gray-100 hover:card-shadow-hover transition-all duration-200">
+                            <div
+                                class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-users text-service text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">片区履职专班</h4>
+                                <p class="text-gray-600 text-sm">所队长/管理员/客户经理/配送员联系信息</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 - 优化布局和质感 -->
+    <footer class="bg-dark text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div>
+                    <div class="flex items-center space-x-3 mb-8">
+                        <div class="w-10 h-10 bg-legal/20 rounded-full flex items-center justify-center">
+                            <i class="fa fa-shield text-legal text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">三码服务平台</h3>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        致力于提供便捷、透明、高效的服务，让群众办事少跑腿、多省心。
+                    </p>
+                    <div class="flex space-x-5">
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-legal/80 transition-all duration-200">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-legal/80 transition-all duration-200">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-legal/80 transition-all duration-200">
+                            <i class="fa fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-8">快速链接</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#legal"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">法制码</a>
+                        </li>
+                        <li><a href="#integrity"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">廉洁码</a>
+                        </li>
+                        <li><a href="#service"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">服务码</a>
+                        </li>
+                        <li><a href="tobacco.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">烟草专区</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">关于我们</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">联系我们</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-8">联系咨询</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-gray-400 mt-1 mr-4 text-lg"></i>
+                            <span class="text-gray-400">新昌县江滨西路600号公共服务大楼3楼J06</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-gray-400 mr-4 text-lg"></i>
+                            <span class="text-gray-400">0575-86032995 / 12313</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-gray-400 mr-4 text-lg"></i>
+                            <span class="text-gray-400">service@example.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 三码服务平台 版权所有 | 京ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 移动端悬浮按钮 - 优化样式 -->
+    <div class="fixed bottom-6 right-6 md:hidden z-40">
+        <button
+            class="bg-legal text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-legal/90 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-xl animate-pulse-slow">
+            <i class="fa fa-qrcode text-xl"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 移动端菜单
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            menuBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // GitHub Pages 地址
+            const baseUrl = 'https://gc-atm.github.io/a/';
+
+            // 生成法制码
+            try {
+                new QRCode(document.getElementById('legal-qrcode'), {
+                    text: baseUrl + 'legal-info.html',
+                    width: 240,
+                    height: 240,
+                    colorDark: '#165DFF',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (error) {
+                document.getElementById('legal-qrcode').innerHTML = '<div class="text-red-500 text-sm py-8">二维码生成失败，请刷新页面</div>';
+                console.error('法制码生成失败：', error);
+            }
+
+            // 生成廉洁码
+            try {
+                new QRCode(document.getElementById('integrity-qrcode'), {
+                    text: baseUrl + 'integrity-info.html',
+                    width: 240,
+                    height: 240,
+                    colorDark: '#36D399',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (error) {
+                document.getElementById('integrity-qrcode').innerHTML = '<div class="text-red-500 text-sm py-8">二维码生成失败，请刷新页面</div>';
+                console.error('廉洁码生成失败：', error);
+            }
+
+            // 生成服务码
+            try {
+                new QRCode(document.getElementById('service-qrcode'), {
+                    text: baseUrl + 'service-web.html',
+                    width: 240,
+                    height: 240,
+                    colorDark: '#FF7D00',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (error) {
+                document.getElementById('service-qrcode').innerHTML = '<div class="text-red-500 text-sm py-8">二维码生成失败，请刷新页面</div>';
+                console.error('服务码生成失败：', error);
+            }
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        mobileMenu.classList.add('hidden');
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // 头部滚动效果
+            window.addEventListener('scroll', function () {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('py-2', 'shadow-md');
+                    header.classList.remove('py-4');
+                } else {
+                    header.classList.add('py-4');
+                    header.classList.remove('py-2', 'shadow-md');
+                }
+            });
+
+            // 滚动渐入动画
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.section-fade').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>
                         integrity: '#36D399',
                         service: '#FF7D00',
                         dark: '#1E293B',
@@ -439,3 +986,4 @@
 </body>
 
 </html>
+
