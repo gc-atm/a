@@ -309,8 +309,10 @@
                 try {
                     const qrContainer = document.getElementById('main-qrcode-container');
                     const containerSize = qrContainer.offsetWidth || 280;
+                    // 这里修改为你实际的中间层页面URL（比如 middle-layer.html）
+                    // 本地测试时可以用相对路径：'./middle-layer.html'
                     new QRCode(qrContainer, {
-                        text: 'https://gc-atm.github.io/a/middle-layer.html', // 指向中间层页面
+                        text: window.location.origin + '/middle-layer.html', // 动态获取当前域名 + 中间层页面
                         width: containerSize,
                         height: containerSize,
                         colorDark: '#165DFF',
