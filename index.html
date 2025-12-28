@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
                         service: '#FF7D00',
                         dark: '#1E293B',
                         light: '#F8FAFC',
-                        tobacco: '#1E40AF'
+                        tobacco: '#1E40AF' // 新增烟草专区主色
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -52,33 +53,19 @@
             .text-balance { text-wrap: balance; }
             .section-fade { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
             .section-fade.active { opacity: 1; transform: translateY(0); }
+            /* 新增二维码容器样式 */
             .qrcode-container {
                 width: 100%;
                 max-width: 280px;
                 aspect-ratio: 1/1;
                 margin: 0 auto;
             }
-            .module-card {
-                transition: all 0.4s ease;
-                border-top: 3px solid transparent;
-            }
-            .module-card-legal:hover {
-                border-top-color: #165DFF;
-                transform: translateY(-5px);
-            }
-            .module-card-integrity:hover {
-                border-top-color: #36D399;
-                transform: translateY(-5px);
-            }
-            .module-card-service:hover {
-                border-top-color: #FF7D00;
-                transform: translateY(-5px);
-            }
         }
     </style>
 </head>
+
 <body class="bg-gray-50 font-sans text-dark antialiased">
-    <!-- 头部导航 -->
+    <!-- 头部导航 - 优化阴影和过渡 -->
     <header class="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -88,25 +75,42 @@
                 <h1 class="text-xl md:text-2xl font-bold text-dark tracking-tight">三码服务平台</h1>
             </div>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#main-qrcode" class="text-gray-600 hover:text-legal transition-colors duration-200 font-medium">总服务码</a>
-                <a href="#modules" class="text-gray-600 hover:text-dark transition-colors duration-200 font-medium">服务模块</a>
-                <a href="tobacco.html" class="text-gray-600 hover:text-tobacco transition-colors duration-200 font-medium">烟草专区</a>
+                <a href="#main-qrcode"
+                    class="text-gray-600 hover:text-legal transition-colors duration-200 font-medium">总服务码</a>
+                <a href="#legal"
+                    class="text-gray-600 hover:text-legal transition-colors duration-200 font-medium">法制码</a>
+                <a href="#integrity"
+                    class="text-gray-600 hover:text-integrity transition-colors duration-200 font-medium">廉洁码</a>
+                <a href="#service"
+                    class="text-gray-600 hover:text-service transition-colors duration-200 font-medium">服务码</a>
+                <a href="tobacco.html"
+                    class="text-gray-600 hover:text-tobacco transition-colors duration-200 font-medium">烟草专区</a>
             </nav>
-            <button class="md:hidden text-gray-600 focus:outline-none transition-transform duration-200 hover:rotate-90" id="menuBtn">
+            <button class="md:hidden text-gray-600 focus:outline-none transition-transform duration-200 hover:rotate-90"
+                id="menuBtn">
                 <i class="fa fa-bars text-xl"></i>
             </button>
         </div>
         <div class="md:hidden hidden bg-white shadow-lg absolute w-full rounded-b-lg overflow-hidden" id="mobileMenu">
             <div class="container mx-auto px-4 py-3 flex flex-col space-y-1">
-                <a href="#main-qrcode" class="text-gray-600 hover:text-legal py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">总服务码</a>
-                <a href="#modules" class="text-gray-600 hover:text-dark py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">服务模块</a>
-                <a href="tobacco.html" class="text-gray-600 hover:text-tobacco py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">烟草专区</a>
+                <a href="#main-qrcode"
+                    class="text-gray-600 hover:text-legal py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">总服务码</a>
+                <a href="#legal"
+                    class="text-gray-600 hover:text-legal py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">法制码</a>
+                <a href="#integrity"
+                    class="text-gray-600 hover:text-integrity py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">廉洁码</a>
+                <a href="#service"
+                    class="text-gray-600 hover:text-service py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">服务码</a>
+                <a href="tobacco.html"
+                    class="text-gray-600 hover:text-tobacco py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">烟草专区</a>
             </div>
         </div>
     </header>
 
-    <!-- 英雄区 -->
-    <section class="bg-gradient-to-r from-legal via-legal/90 to-blue-700 py-20 md:py-28 text-white relative overflow-hidden">
+    <!-- 英雄区 - 优化渐变和动效 -->
+    <section
+        class="bg-gradient-to-r from-legal via-legal/90 to-blue-700 py-20 md:py-28 text-white relative overflow-hidden">
+        <!-- 背景装饰 -->
         <div class="absolute inset-0 overflow-hidden">
             <div class="absolute top-10 left-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
             <div class="absolute bottom-10 right-10 w-60 h-60 bg-white/5 rounded-full blur-3xl"></div>
@@ -114,16 +118,23 @@
         <div class="container mx-auto px-4 text-center relative z-10 animate-fade-in">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-balance">便捷服务 码上可达</h2>
             <p class="text-lg md:text-xl max-w-2xl mx-auto opacity-90 mb-10 text-balance">
-                扫描总服务码，即可获取法制信息、廉洁公示和相关服务，让办事更高效、透明
+                扫描总服务二维码，即可进入服务选择页面，获取法制信息、廉洁公示和相关服务，让办事更高效、透明
             </p>
             <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-                <a href="#main-qrcode" class="bg-white text-legal px-7 py-3.5 rounded-lg font-medium hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <a href="#main-qrcode"
+                    class="bg-white text-legal px-7 py-3.5 rounded-lg font-medium hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     总服务码 <i class="fa fa-arrow-right ml-2"></i>
                 </a>
-                <a href="#modules" class="bg-integrity text-white px-7 py-3.5 rounded-lg font-medium hover:bg-integrity/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    服务模块 <i class="fa fa-arrow-right ml-2"></i>
+                <a href="#legal"
+                    class="bg-integrity text-white px-7 py-3.5 rounded-lg font-medium hover:bg-integrity/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    法制码 <i class="fa fa-arrow-right ml-2"></i>
                 </a>
-                <a href="tobacco.html" class="bg-tobacco text-white px-7 py-3.5 rounded-lg font-medium hover:bg-tobacco/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <a href="#integrity"
+                    class="bg-service text-white px-7 py-3.5 rounded-lg font-medium hover:bg-service/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    廉洁码 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+                <a href="tobacco.html"
+                    class="bg-tobacco text-white px-7 py-3.5 rounded-lg font-medium hover:bg-tobacco/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     烟草专区 <i class="fa fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -131,103 +142,279 @@
     </section>
 
     <main class="container mx-auto px-4 py-16 md:py-20">
-        <!-- 总二维码区域 -->
+        <!-- 总服务码区域 -->
         <section id="main-qrcode" class="mb-28 section-fade">
-            <div class="text-center mb-12">
-                <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-dark leading-tight">总服务二维码</h3>
-                <p class="text-gray-600 max-w-2xl mx-auto">扫描下方二维码，即可进入三码服务平台总入口，按需查看法制、廉洁、服务相关信息</p>
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-dark leading-tight">三码合一 总服务码</h3>
+                <p class="text-gray-600 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
+                    扫描下方总服务码，即可进入服务选择页面，根据您的需求选择法制、廉洁或服务模块，一站式获取所有相关信息
+                </p>
             </div>
 
-            <div class="max-w-3xl mx-auto">
+            <div class="max-w-md mx-auto">
                 <div class="bg-white rounded-2xl p-8 card-shadow qrcode-hover">
                     <div class="flex items-center justify-center mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-r from-legal via-integrity to-service rounded-full flex items-center justify-center mr-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-legal via-integrity to-service rounded-full flex items-center justify-center mr-4">
                             <i class="fa fa-qrcode text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-dark">三码服务总入口</h3>
+                        <h3 class="text-2xl font-bold text-dark">总服务码</h3>
                     </div>
-                    <!-- 总二维码容器 -->
-                    <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100 qrcode-container" id="main-qrcode-container"></div>
+                    <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100 qrcode-container"
+                        id="main-qrcode-container"></div>
                     <p class="text-center text-gray-600 mb-3">
-                        <i class="fa fa-mobile text-2xl mr-2 text-legal"></i> 扫码进入三码服务平台
+                        <i class="fa fa-mobile text-2xl mr-2 text-legal"></i> 扫码进入服务选择页面
                     </p>
-                    <p class="text-center scan-tip bg-gradient-to-r from-legal via-integrity to-service text-sm font-medium">
-                        包含：法制码、廉洁码、服务码所有功能入口
+                    <p
+                        class="text-center scan-tip bg-gradient-to-r from-legal via-integrity to-service text-sm font-medium">
+                        包含：法制码、廉洁码、服务码所有功能
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- 服务模块区域 -->
-        <section id="modules" class="mb-28 section-fade">
-            <div class="text-center mb-12">
-                <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-dark leading-tight">服务模块目录</h3>
-                <p class="text-gray-600 max-w-2xl mx-auto">点击下方模块卡片，直接进入对应服务专区查看详细信息</p>
+        <!-- 法制码区域 - 保留原有内容作为说明 -->
+        <section id="legal" class="mb-28 section-fade">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-dark leading-tight">法制信息 一键获取</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                        扫描总服务码后选择法制模块，即可查看许可证信息、未成年人相关规定、电子业务指南及典型案例，让法律知识触手可及，办事有依据、维权有方向。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-file-text-o text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">许可证信息</h4>
+                                <p class="text-gray-600 text-sm">相关资质证明及法律法规依据</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-child text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">未成年人保护</h4>
+                                <p class="text-gray-600 text-sm">专项规定及保护措施说明</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-laptop text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">电子业务指南</h4>
+                                <p class="text-gray-600 text-sm">线上办理流程及操作说明</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-book text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">典型案例库</h4>
+                                <p class="text-gray-600 text-sm">相关法律案例及解读分析</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start col-span-1 sm:col-span-2 mt-2 p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div
+                                class="w-10 h-10 bg-legal/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-play-circle text-legal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">普法科普视频</h4>
+                                <p class="text-gray-600 text-sm">
+                                    含5期烟草合规短视频：警惕烟草证延续诈骗、店铺转让烟草证不可转、禁止悬挂许可证复印件、亮证经营要求、无人超市禁售烟草</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="bg-white rounded-2xl p-8 card-shadow">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-legal/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-gavel text-legal text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-legal">法制模块说明</h3>
+                        </div>
+                        <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100">
+                            <div class="flex items-center justify-center h-full">
+                                <div class="text-center">
+                                    <i class="fa fa-info-circle text-legal text-4xl mb-4"></i>
+                                    <p class="text-gray-600">
+                                        此模块包含许可证信息、未成年人保护、电子业务指南、典型案例库和普法科普视频等内容
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center text-gray-600 mb-3">
+                            <i class="fa fa-arrow-up text-2xl mr-2 text-legal"></i> 请扫描上方总服务码进入
+                        </p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- 法制码模块 -->
-                <a href="legal-info.html" class="module-card module-card-legal bg-white rounded-2xl p-8 card-shadow hover:card-shadow-hover block">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-legal/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fa fa-gavel text-legal text-2xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-legal mb-4">法制码专区</h4>
-                        <p class="text-gray-600 mb-6 text-left">
-                            • 许可证信息及办理指南<br>
-                            • 未成年人保护相关规定<br>
-                            • 电子烟管理办法解读<br>
-                            • 涉烟违法行为法律责任<br>
-                            • 普法科普视频
-                        </p>
-                        <div class="inline-flex items-center text-legal font-medium hover:underline">
-                            进入查看 <i class="fa fa-arrow-right ml-2"></i>
+        <!-- 廉洁码区域 - 保留原有内容作为说明 -->
+        <section id="integrity" class="mb-28 section-fade">
+            <div class="bg-gray-100/80 rounded-3xl p-8 md:p-12 backdrop-blur-sm">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-16">
+                    <div class="w-full md:w-1/2">
+                        <div class="bg-white rounded-2xl p-8 card-shadow">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-12 h-12 bg-integrity/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-balance-scale text-integrity text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-integrity">廉洁模块说明</h3>
+                            </div>
+                            <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100">
+                                <div class="flex items-center justify-center h-full">
+                                    <div class="text-center">
+                                        <i class="fa fa-info-circle text-integrity text-4xl mb-4"></i>
+                                        <p class="text-gray-600">
+                                            此模块包含廉洁承诺、行为规范、监督举报渠道等公示信息
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-center text-gray-600 mb-3">
+                                <i class="fa fa-arrow-up text-2xl mr-2 text-integrity"></i> 请扫描上方总服务码进入
+                            </p>
                         </div>
                     </div>
-                </a>
-
-                <!-- 廉洁码模块 -->
-                <a href="integrity-info.html" class="module-card module-card-integrity bg-white rounded-2xl p-8 card-shadow hover:card-shadow-hover block">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-integrity/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fa fa-balance-scale text-integrity text-2xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-integrity mb-4">廉洁码专区</h4>
-                        <p class="text-gray-600 mb-6 text-left">
-                            • 廉洁自律承诺书<br>
-                            • 工作人员行为规范<br>
-                            • 专卖/营销/物流八条禁令<br>
-                            • 监督举报渠道及流程
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-dark leading-tight">廉洁公示 阳光透明
+                        </h3>
+                        <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                            扫描总服务码后选择廉洁模块，即可查看三份廉洁公示长图，包括廉洁承诺、行为规范和监督举报方式，主动接受社会各界监督，保障服务公平公正。
                         </p>
-                        <div class="inline-flex items-center text-integrity font-medium hover:underline">
-                            进入查看 <i class="fa fa-arrow-right ml-2"></i>
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                            <h4 class="font-semibold text-xl mb-6 flex items-center">
+                                <i class="fa fa-check-circle text-integrity mr-3 text-xl"></i> 廉洁公示内容
+                            </h4>
+                            <ul class="space-y-5">
+                                <li
+                                    class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                                    <div
+                                        class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                                        <span class="text-integrity font-medium">1</span>
+                                    </div>
+                                    <span class="text-gray-700">廉洁自律承诺书（含零售市场主体信用承诺、专卖部门权力清单承诺）</span>
+                                </li>
+                                <li
+                                    class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                                    <div
+                                        class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                                        <span class="text-integrity font-medium">2</span>
+                                    </div>
+                                    <span class="text-gray-700">工作人员行为规范及禁令（专卖/营销/物流条线八条禁令）</span>
+                                </li>
+                                <li
+                                    class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                                    <div
+                                        class="w-8 h-8 bg-integrity/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                                        <span class="text-integrity font-medium">3</span>
+                                    </div>
+                                    <span class="text-gray-700">监督举报渠道及处理流程（12313热线、线上/线下举报）</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                </a>
+                </div>
+            </div>
+        </section>
 
-                <!-- 服务码模块 -->
-                <a href="service-web.html" class="module-card module-card-service bg-white rounded-2xl p-8 card-shadow hover:card-shadow-hover block">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-service/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fa fa-handshake-o text-service text-2xl"></i>
+        <!-- 服务码区域 - 保留原有内容作为说明 -->
+        <section id="service" class="mb-20 section-fade">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2">
+                    <div class="bg-white rounded-2xl p-8 card-shadow">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-handshake-o text-service text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-service">服务模块说明</h3>
                         </div>
-                        <h4 class="text-xl font-bold text-service mb-4">服务码专区</h4>
-                        <p class="text-gray-600 mb-6 text-left">
-                            • 许可证新办/延续/变更指南<br>
-                            • 零售业态分类说明<br>
-                            • 零售点合理布局规定<br>
-                            • 办事资料下载中心
+                        <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100">
+                            <div class="flex items-center justify-center h-full">
+                                <div class="text-center">
+                                    <i class="fa fa-info-circle text-service text-4xl mb-4"></i>
+                                    <p class="text-gray-600">
+                                        此模块包含办事指南、流程长图、资料下载、片区履职专班等服务内容
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center text-gray-600 mb-3">
+                            <i class="fa fa-arrow-up text-2xl mr-2 text-service"></i> 请扫描上方总服务码进入
                         </p>
-                        <div class="inline-flex items-center text-service font-medium hover:underline">
-                            进入查看 <i class="fa fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-dark leading-tight">便民服务 一网通办</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                        扫描总服务码后选择服务模块，即可进入包含长图展示的服务网页，获取详细的办事指南、流程说明和相关下载资料，让服务更贴心、办事更省心。
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm flex items-center border border-gray-100 hover:card-shadow-hover transition-all duration-200">
+                            <div
+                                class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-file-image-o text-service text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">长图展示指南</h4>
+                                <p class="text-gray-600 text-sm">直观清晰的办事流程图解（含片区履职专刊）</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm flex items-center border border-gray-100 hover:card-shadow-hover transition-all duration-200">
+                            <div
+                                class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-list-alt text-service text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">详细办事说明</h4>
+                                <p class="text-gray-600 text-sm">许可证新办/延续等step-by-step操作指引</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm flex items-center border border-gray-100 hover:card-shadow-hover transition-all duration-200">
+                            <div
+                                class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-download text-service text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">资料下载中心</h4>
+                                <p class="text-gray-600 text-sm">相关表格及参考资料</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm flex items-center border border-gray-100 hover:card-shadow-hover transition-all duration-200">
+                            <div
+                                class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-users text-service text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">片区履职专班</h4>
+                                <p class="text-gray-600 text-sm">所队长/管理员/客户经理/配送员联系信息</p>
+                            </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- 页脚 -->
+    <!-- 页脚 - 优化布局和质感 -->
     <footer class="bg-dark text-white py-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -242,13 +429,16 @@
                         致力于提供便捷、透明、高效的服务，让群众办事少跑腿、多省心。
                     </p>
                     <div class="flex space-x-5">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-legal/80 transition-all duration-200">
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-legal/80 transition-all duration-200">
                             <i class="fa fa-weixin"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-legal/80 transition-all duration-200">
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-legal/80 transition-all duration-200">
                             <i class="fa fa-weibo"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-legal/80 transition-all duration-200">
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-legal/80 transition-all duration-200">
                             <i class="fa fa-phone"></i>
                         </a>
                     </div>
@@ -256,12 +446,24 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-8">快速链接</h4>
                     <ul class="space-y-4">
-                        <li><a href="#main-qrcode" class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">总服务码</a></li>
-                        <li><a href="#modules" class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">服务模块</a></li>
-                        <li><a href="legal-info.html" class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">法制码专区</a></li>
-                        <li><a href="integrity-info.html" class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">廉洁码专区</a></li>
-                        <li><a href="service-web.html" class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">服务码专区</a></li>
-                        <li><a href="tobacco.html" class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">烟草专区</a></li>
+                        <li><a href="#main-qrcode"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">总服务码</a>
+                        </li>
+                        <li><a href="#legal"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">法制码</a>
+                        </li>
+                        <li><a href="#integrity"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">廉洁码</a>
+                        </li>
+                        <li><a href="#service"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">服务码</a>
+                        </li>
+                        <li><a href="tobacco.html"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">烟草专区</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">关于我们</a>
+                        </li>
                     </ul>
                 </div>
                 <div>
@@ -288,9 +490,10 @@
         </div>
     </footer>
 
-    <!-- 移动端悬浮按钮 -->
+    <!-- 移动端悬浮按钮 - 优化样式 -->
     <div class="fixed bottom-6 right-6 md:hidden z-40">
-        <button class="bg-legal text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-legal/90 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-xl animate-pulse-slow">
+        <button
+            class="bg-legal text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-legal/90 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-xl animate-pulse-slow">
             <i class="fa fa-qrcode text-xl"></i>
         </button>
     </div>
@@ -304,29 +507,31 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // 生成总二维码（指向中间层页面）
-            function generateMainQRCode() {
+            // GitHub Pages 地址
+            const baseUrl = 'https://gc-atm.github.io/a/';
+
+            // 生成二维码的通用函数
+            function generateQRCode(containerId, text, color) {
                 try {
-                    const qrContainer = document.getElementById('main-qrcode-container');
+                    const qrContainer = document.getElementById(containerId);
+                    // 获取容器的实际尺寸
                     const containerSize = qrContainer.offsetWidth || 280;
-                    // 这里修改为你实际的中间层页面URL（比如 middle-layer.html）
-                    // 本地测试时可以用相对路径：'./middle-layer.html'
                     new QRCode(qrContainer, {
-                        text: window.location.origin + '/middle-layer.html', // 动态获取当前域名 + 中间层页面
+                        text: text,
                         width: containerSize,
                         height: containerSize,
-                        colorDark: '#165DFF',
+                        colorDark: color,
                         colorLight: '#ffffff',
                         correctLevel: QRCode.CorrectLevel.H
                     });
                 } catch (error) {
-                    document.getElementById('main-qrcode-container').innerHTML = '<div class="text-red-500 text-sm py-8">二维码生成失败，请刷新页面</div>';
-                    console.error('总二维码生成失败：', error);
+                    document.getElementById(containerId).innerHTML = '<div class="text-red-500 text-sm py-8">二维码生成失败，请刷新页面</div>';
+                    console.error(`${containerId} 生成失败：`, error);
                 }
             }
 
-            // 生成总二维码
-            generateMainQRCode();
+            // 只生成总服务码，指向中间层页面
+            generateQRCode('main-qrcode-container', baseUrl + 'index-qr.html', '#165DFF');
 
             // 平滑滚动
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -365,7 +570,7 @@
                 });
             }, {
                 threshold: 0.1
-            });  
+            });
 
             document.querySelectorAll('.section-fade').forEach(section => {
                 observer.observe(section);
@@ -373,4 +578,5 @@
         });
     </script>
 </body>
+
 </html>
