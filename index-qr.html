@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三码服务平台 - 服务选择</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card {
+            animation: fadeIn 0.5s ease-out;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="max-w-md w-full">
+        <!-- 头部 -->
+        <div class="text-center mb-10">
+            <div class="w-16 h-16 bg-gradient-to-r from-[#165DFF] via-[#36D399] to-[#FF7D00] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa fa-qrcode text-white text-3xl"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">三码服务平台</h1>
+            <p class="text-gray-600">请选择您需要的服务模块</p>
+        </div>
+
+        <!-- 功能卡片 -->
+        <div class="grid grid-cols-1 gap-6">
+            <!-- 法制码 -->
+            <a href="legal-info.html" class="card block">
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-[#165DFF]/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-gavel text-[#165DFF] text-2xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-[#165DFF]">法制码</h2>
+                    </div>
+                    <p class="text-gray-600">
+                        查看许可证信息、未成年人保护规定、电子业务指南、典型案例库、普法科普视频
+                    </p>
+                </div>
+            </a>
+
+            <!-- 廉洁码 -->
+            <a href="integrity-info.html" class="card block">
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-[#36D399]/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-balance-scale text-[#36D399] text-2xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-[#36D399]">廉洁码</h2>
+                    </div>
+                    <p class="text-gray-600">
+                        查看廉洁自律承诺书、工作人员行为规范、监督举报渠道及处理流程
+                    </p>
+                </div>
+            </a>
+
+            <!-- 服务码 -->
+            <a href="service-web.html" class="card block">
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-[#FF7D00]/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-handshake-o text-[#FF7D00] text-2xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-[#FF7D00]">服务码</h2>
+                    </div>
+                    <p class="text-gray-600">
+                        查看办事指南、流程长图、资料下载、片区履职专班联系信息
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="mt-10 text-center text-gray-500 text-sm">
+            <p>&copy; 2024 三码服务平台 版权所有</p>
+        </div>
+    </div>
+</body>
+</html>
