@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三码服务平台 - 码上服务</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        legal: '#165DFF',
+                        integrity: '#36D399',
+                        service: '#FF7D00',
+                        dark: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto { content-visibility: auto; }
+            .card-hover { transition: all 0.3s ease; }
+            .card-hover:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+            .text-balance { text-wrap: balance; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-dark antialiased">
+    <!-- 头部 -->
+    <header class="bg-white shadow-sm py-6">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-2xl md:text-3xl font-bold text-dark animate-fade-in">三码服务入口</h1>
+            <p class="text-gray-600 mt-2 animate-slide-up">选择您需要的服务码，进入对应专区</p>
+        </div>
+    </header>
+
+    <!-- 中间层核心内容：三个码入口 -->
+    <main class="container mx-auto px-4 py-12 md:py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <!-- 法制码入口 -->
+            <a href="legal-info.html" class="block">
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-sm border-t-4 border-legal text-center">
+                    <div class="w-20 h-20 bg-legal/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-gavel text-legal text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-legal mb-4">法制码专区</h3>
+                    <p class="text-gray-600 text-balance">
+                        许可证办理、未成年人保护、电子烟管理、涉烟违法责任等法制信息
+                    </p>
+                    <div class="mt-6 inline-flex items-center text-legal font-medium">
+                        进入专区 <i class="fa fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 廉洁码入口 -->
+            <a href="integrity-info.html" class="block">
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-sm border-t-4 border-integrity text-center">
+                    <div class="w-20 h-20 bg-integrity/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-balance-scale text-integrity text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-integrity mb-4">廉洁码专区</h3>
+                    <p class="text-gray-600 text-balance">
+                        廉洁承诺书、行为规范、八条禁令、监督举报渠道等廉洁公示信息
+                    </p>
+                    <div class="mt-6 inline-flex items-center text-integrity font-medium">
+                        进入专区 <i class="fa fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 服务码入口 -->
+            <a href="service-web.html" class="block">
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-sm border-t-4 border-service text-center">
+                    <div class="w-20 h-20 bg-service/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-handshake-o text-service text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-service mb-4">服务码专区</h3>
+                    <p class="text-gray-600 text-balance">
+                        许可证办理指南、零售业态分类、合理布局规定、资料下载等便民服务
+                    </p>
+                    <div class="mt-6 inline-flex items-center text-service font-medium">
+                        进入专区 <i class="fa fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 返回首页按钮 -->
+        <div class="text-center mt-12">
+            <a href="index.html" class="inline-flex items-center px-6 py-3 bg-dark text-white rounded-lg hover:bg-dark/90 transition-colors">
+                <i class="fa fa-home mr-2"></i> 返回平台首页
+            </a>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2024 三码服务平台 - 中间服务层</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 页面加载动画
+            setTimeout(() => {
+                document.querySelectorAll('.card-hover').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('animate-slide-up');
+                    }, index * 200);
+                });
+            }, 300);
+        });
+    </script>
+</body>
+</html>
