@@ -3,27 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- 微信适配核心meta -->
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="format-detection" content="telephone=no, email=no">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>三码服务平台 - 法制·廉洁·服务</title>
-    <!-- 改用微信兼容更好的CDN -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/tailwindcss/3.4.13/tailwind.min.js"></script>
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <!-- 微信JS-SDK -->
-    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        // 禁用微信浏览器的默认行为
-        document.addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, { passive: false });
-
         tailwind.config = {
             theme: {
                 extend: {
@@ -33,10 +18,10 @@
                         service: '#FF7D00',
                         dark: '#1E293B',
                         light: '#F8FAFC',
-                        tobacco: '#1E40AF'
+                        tobacco: '#1E40AF' // 新增烟草专区主色
                     },
                     fontFamily: {
-                        sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.8s ease-in-out',
@@ -68,6 +53,7 @@
             .text-balance { text-wrap: balance; }
             .section-fade { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
             .section-fade.active { opacity: 1; transform: translateY(0); }
+            /* 新增二维码容器样式 */
             .qrcode-container {
                 width: 100%;
                 max-width: 240px;
@@ -76,51 +62,10 @@
             }
         }
     </style>
-    <!-- 兼容微信X5内核的基础样式 -->
-    <style>
-        /* 微信浏览器点击高亮去除 */
-        * {
-            -webkit-tap-highlight-color: transparent;
-            tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            touch-callout: none;
-        }
-
-        /* 修复微信下动画卡顿 */
-        @-webkit-keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 确保body可滚动 */
-        body {
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-        }
-    </style>
 </head>
 
 <body class="bg-gray-50 font-sans text-dark antialiased">
-    <!-- 头部导航 -->
+    <!-- 头部导航 - 优化阴影和过渡 -->
     <header class="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -158,9 +103,10 @@
         </div>
     </header>
 
-    <!-- 英雄区 -->
+    <!-- 英雄区 - 优化渐变和动效 -->
     <section
         class="bg-gradient-to-r from-legal via-legal/90 to-blue-700 py-20 md:py-28 text-white relative overflow-hidden">
+        <!-- 背景装饰 -->
         <div class="absolute inset-0 overflow-hidden">
             <div class="absolute top-10 left-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
             <div class="absolute bottom-10 right-10 w-60 h-60 bg-white/5 rounded-full blur-3xl"></div>
@@ -192,7 +138,7 @@
     </section>
 
     <main class="container mx-auto px-4 py-16 md:py-20">
-        <!-- 法制码区域 -->
+        <!-- 法制码区域 - 优化卡片和滚动动画 -->
         <section id="legal" class="mb-28 section-fade">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="w-full md:w-1/2 order-2 md:order-1">
@@ -263,6 +209,7 @@
                             </div>
                             <h3 class="text-2xl font-bold text-legal">法制码</h3>
                         </div>
+                        <!-- 修改：使用自定义的二维码容器类 -->
                         <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100 qrcode-container"
                             id="legal-qrcode"></div>
                         <p class="text-center text-gray-600 mb-3">
@@ -276,7 +223,7 @@
             </div>
         </section>
 
-        <!-- 廉洁码区域 -->
+        <!-- 廉洁码区域 - 优化背景和卡片 -->
         <section id="integrity" class="mb-28 section-fade">
             <div class="bg-gray-100/80 rounded-3xl p-8 md:p-12 backdrop-blur-sm">
                 <div class="flex flex-col md:flex-row-reverse items-center gap-16">
@@ -289,6 +236,7 @@
                                 </div>
                                 <h3 class="text-2xl font-bold text-integrity">廉洁码</h3>
                             </div>
+                            <!-- 修改：使用自定义的二维码容器类 -->
                             <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100 qrcode-container"
                                 id="integrity-qrcode"></div>
                             <p class="text-center text-gray-600 mb-3">
@@ -342,7 +290,7 @@
             </div>
         </section>
 
-        <!-- 服务码区域 -->
+        <!-- 服务码区域 - 优化布局和动效 -->
         <section id="service" class="mb-20 section-fade">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="w-full md:w-1/2">
@@ -353,6 +301,7 @@
                             </div>
                             <h3 class="text-2xl font-bold text-service">服务码</h3>
                         </div>
+                        <!-- 修改：使用自定义的二维码容器类 -->
                         <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100 qrcode-container"
                             id="service-qrcode"></div>
                         <p class="text-center text-gray-600 mb-3">
@@ -419,7 +368,7 @@
         </section>
     </main>
 
-    <!-- 页脚 -->
+    <!-- 页脚 - 优化布局和质感 -->
     <footer class="bg-dark text-white py-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -495,7 +444,7 @@
         </div>
     </footer>
 
-    <!-- 移动端悬浮按钮 -->
+    <!-- 移动端悬浮按钮 - 优化样式 -->
     <div class="fixed bottom-6 right-6 md:hidden z-40">
         <button
             class="bg-legal text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-legal/90 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-xl animate-pulse-slow">
@@ -504,14 +453,7 @@
     </div>
 
     <script>
-        // 微信浏览器兼容处理
         document.addEventListener('DOMContentLoaded', function () {
-            // 禁用微信下拉刷新
-            document.body.addEventListener('touchmove', function (e) {
-                if (e._isScroller) return;
-                e.preventDefault();
-            }, { passive: false });
-
             // 移动端菜单
             const menuBtn = document.getElementById('menuBtn');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -526,6 +468,7 @@
             function generateQRCode(containerId, text, color) {
                 try {
                     const qrContainer = document.getElementById(containerId);
+                    // 获取容器的实际尺寸
                     const containerSize = qrContainer.offsetWidth || 240;
                     new QRCode(qrContainer, {
                         text: text,
@@ -541,9 +484,11 @@
                 }
             }
 
-            // 生成二维码
+            // 生成法制码
             generateQRCode('legal-qrcode', baseUrl + 'legal-info.html', '#165DFF');
+            // 生成廉洁码
             generateQRCode('integrity-qrcode', baseUrl + 'integrity-info.html', '#36D399');
+            // 生成服务码
             generateQRCode('service-qrcode', baseUrl + 'service-web.html', '#FF7D00');
 
             // 平滑滚动
