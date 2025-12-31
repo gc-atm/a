@@ -74,6 +74,15 @@
                 aspect-ratio: 1/1;
                 margin: 0 auto;
             }
+            /* 新增：扫码提示样式 */
+            .scan-notice {
+                background-color: #fef3c7;
+                color: #92400e;
+                border-radius: 8px;
+                padding: 12px;
+                font-size: 14px;
+                margin-top: 10px;
+            }
         }
     </style>
     <!-- 兼容微信X5内核的基础样式 -->
@@ -268,9 +277,13 @@
                         <p class="text-center text-gray-600 mb-3">
                             <i class="fa fa-mobile text-2xl mr-2 text-legal"></i> 扫码查看法制相关信息
                         </p>
-                        <p class="text-center scan-tip bg-gradient-to-r from-legal to-blue-400 text-sm font-medium">
+                        <p class="text-center scan-tip bg-gradient-to-r from-legal to-blue-400 text-sm font-medium mb-2">
                             包含：许可证、未成年人保护、电子业务、典型案例、普法视频
                         </p>
+                        <!-- 新增扫码提示 -->
+                        <div class="scan-notice text-center">
+                            <i class="fa fa-info-circle mr-2"></i>若扫码无法打开，请用手机浏览器访问
+                        </div>
                     </div>
                 </div>
             </div>
@@ -295,9 +308,13 @@
                                 <i class="fa fa-mobile text-2xl mr-2 text-integrity"></i> 扫码查看廉洁公示信息
                             </p>
                             <p
-                                class="text-center scan-tip bg-gradient-to-r from-integrity to-green-400 text-sm font-medium">
+                                class="text-center scan-tip bg-gradient-to-r from-integrity to-green-400 text-sm font-medium mb-2">
                                 包含：廉洁承诺、行为规范、监督举报渠道
                             </p>
+                            <!-- 新增扫码提示 -->
+                            <div class="scan-notice text-center">
+                                <i class="fa fa-info-circle mr-2"></i>若扫码无法打开，请用手机浏览器访问
+                            </div>
                         </div>
                     </div>
                     <div class="w-full md:w-1/2">
@@ -358,9 +375,13 @@
                         <p class="text-center text-gray-600 mb-3">
                             <i class="fa fa-mobile text-2xl mr-2 text-service"></i> 扫码进入服务网页
                         </p>
-                        <p class="text-center scan-tip bg-gradient-to-r from-service to-orange-400 text-sm font-medium">
+                        <p class="text-center scan-tip bg-gradient-to-r from-service to-orange-400 text-sm font-medium mb-2">
                             包含：办事指南、流程长图、资料下载、片区履职专班
                         </p>
+                        <!-- 新增扫码提示 -->
+                        <div class="scan-notice text-center">
+                            <i class="fa fa-info-circle mr-2"></i>若扫码无法打开，请用手机浏览器访问
+                        </div>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2">
@@ -490,7 +511,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-                <p>&copy; 2024 三码服务平台 版权所有 | 京ICP备XXXXXXXX号</p>
+                <p>&copy; 2024 三码服务平台 版权所有 | 浙ICP备XXXXXXXX号</p>
             </div>
         </div>
     </footer>
@@ -519,8 +540,8 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // GitHub Pages 地址
-            const baseUrl = 'https://gc-atm.github.io/a/';
+            // 替换为你的备案域名（核心修改点）
+            const baseUrl = 'https://sannma3code.top/';
 
             // 生成二维码的通用函数
             function generateQRCode(containerId, text, color) {
@@ -541,7 +562,7 @@
                 }
             }
 
-            // 生成二维码
+            // 生成二维码（链接已替换为你的域名）
             generateQRCode('legal-qrcode', baseUrl + 'legal-info.html', '#165DFF');
             generateQRCode('integrity-qrcode', baseUrl + 'integrity-info.html', '#36D399');
             generateQRCode('service-qrcode', baseUrl + 'service-web.html', '#FF7D00');
@@ -588,6 +609,13 @@
             document.querySelectorAll('.section-fade').forEach(section => {
                 observer.observe(section);
             });
+
+            // 新增：微信环境检测并提示
+            const isWechat = /MicroMessenger/i.test(navigator.userAgent);
+            if (isWechat) {
+                // 可以在这里添加微信专属提示
+                console.log('当前在微信浏览器中，若链接无法打开请用手机浏览器访问');
+            }
         });
     </script>
 </body>
