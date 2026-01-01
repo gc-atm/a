@@ -3,27 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- 微信适配核心meta -->
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="format-detection" content="telephone=no, email=no">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>三码服务平台 - 法制·廉洁·服务</title>
-    <!-- 改用微信兼容更好的CDN -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/tailwindcss/3.4.13/tailwind.min.js"></script>
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <!-- 微信JS-SDK -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- 微信网页开发SDK -->
     <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
     <script>
-        // 禁用微信浏览器的默认行为
-        document.addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, { passive: false });
-
         tailwind.config = {
             theme: {
                 extend: {
@@ -33,10 +20,10 @@
                         service: '#FF7D00',
                         dark: '#1E293B',
                         light: '#F8FAFC',
-                        tobacco: '#1E40AF'
+                        tobacco: '#1E40AF' // 新增烟草专区主色
                     },
                     fontFamily: {
-                        sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.8s ease-in-out',
@@ -68,68 +55,19 @@
             .text-balance { text-wrap: balance; }
             .section-fade { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
             .section-fade.active { opacity: 1; transform: translateY(0); }
+            /* 新增二维码容器样式 */
             .qrcode-container {
                 width: 100%;
                 max-width: 240px;
                 aspect-ratio: 1/1;
                 margin: 0 auto;
             }
-            /* 新增：扫码提示样式 */
-            .scan-notice {
-                background-color: #fef3c7;
-                color: #92400e;
-                border-radius: 8px;
-                padding: 12px;
-                font-size: 14px;
-                margin-top: 10px;
-            }
-        }
-    </style>
-    <!-- 兼容微信X5内核的基础样式 -->
-    <style>
-        /* 微信浏览器点击高亮去除 */
-        * {
-            -webkit-tap-highlight-color: transparent;
-            tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            touch-callout: none;
-        }
-
-        /* 修复微信下动画卡顿 */
-        @-webkit-keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 确保body可滚动 */
-        body {
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
         }
     </style>
 </head>
 
 <body class="bg-gray-50 font-sans text-dark antialiased">
-    <!-- 头部导航 -->
+    <!-- 头部导航 - 优化阴影和过渡 -->
     <header class="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -167,9 +105,10 @@
         </div>
     </header>
 
-    <!-- 英雄区 -->
+    <!-- 英雄区 - 优化渐变和动效 -->
     <section
         class="bg-gradient-to-r from-legal via-legal/90 to-blue-700 py-20 md:py-28 text-white relative overflow-hidden">
+        <!-- 背景装饰 -->
         <div class="absolute inset-0 overflow-hidden">
             <div class="absolute top-10 left-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
             <div class="absolute bottom-10 right-10 w-60 h-60 bg-white/5 rounded-full blur-3xl"></div>
@@ -192,7 +131,7 @@
                     class="bg-service text-white px-7 py-3.5 rounded-lg font-medium hover:bg-service/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     服务码 <i class="fa fa-arrow-right ml-2"></i>
                 </a>
-                <a href="tobacco.html"
+                <a href="index-qr.html"
                     class="bg-tobacco text-white px-7 py-3.5 rounded-lg font-medium hover:bg-tobacco/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     烟草专区 <i class="fa fa-arrow-right ml-2"></i>
                 </a>
@@ -201,7 +140,7 @@
     </section>
 
     <main class="container mx-auto px-4 py-16 md:py-20">
-        <!-- 法制码区域 -->
+        <!-- 法制码区域 - 优化卡片和滚动动画 -->
         <section id="legal" class="mb-28 section-fade">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="w-full md:w-1/2 order-2 md:order-1">
@@ -272,24 +211,21 @@
                             </div>
                             <h3 class="text-2xl font-bold text-legal">法制码</h3>
                         </div>
+                        <!-- 修改：使用自定义的二维码容器类 -->
                         <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100 qrcode-container"
                             id="legal-qrcode"></div>
                         <p class="text-center text-gray-600 mb-3">
                             <i class="fa fa-mobile text-2xl mr-2 text-legal"></i> 扫码查看法制相关信息
                         </p>
-                        <p class="text-center scan-tip bg-gradient-to-r from-legal to-blue-400 text-sm font-medium mb-2">
+                        <p class="text-center scan-tip bg-gradient-to-r from-legal to-blue-400 text-sm font-medium">
                             包含：许可证、未成年人保护、电子业务、典型案例、普法视频
                         </p>
-                        <!-- 新增扫码提示 -->
-                        <div class="scan-notice text-center">
-                            <i class="fa fa-info-circle mr-2"></i>若扫码无法打开，请用手机浏览器访问
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 廉洁码区域 -->
+        <!-- 廉洁码区域 - 优化背景和卡片 -->
         <section id="integrity" class="mb-28 section-fade">
             <div class="bg-gray-100/80 rounded-3xl p-8 md:p-12 backdrop-blur-sm">
                 <div class="flex flex-col md:flex-row-reverse items-center gap-16">
@@ -302,19 +238,16 @@
                                 </div>
                                 <h3 class="text-2xl font-bold text-integrity">廉洁码</h3>
                             </div>
+                            <!-- 修改：使用自定义的二维码容器类 -->
                             <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100 qrcode-container"
                                 id="integrity-qrcode"></div>
                             <p class="text-center text-gray-600 mb-3">
                                 <i class="fa fa-mobile text-2xl mr-2 text-integrity"></i> 扫码查看廉洁公示信息
                             </p>
                             <p
-                                class="text-center scan-tip bg-gradient-to-r from-integrity to-green-400 text-sm font-medium mb-2">
+                                class="text-center scan-tip bg-gradient-to-r from-integrity to-green-400 text-sm font-medium">
                                 包含：廉洁承诺、行为规范、监督举报渠道
                             </p>
-                            <!-- 新增扫码提示 -->
-                            <div class="scan-notice text-center">
-                                <i class="fa fa-info-circle mr-2"></i>若扫码无法打开，请用手机浏览器访问
-                            </div>
                         </div>
                     </div>
                     <div class="w-full md:w-1/2">
@@ -359,7 +292,7 @@
             </div>
         </section>
 
-        <!-- 服务码区域 -->
+        <!-- 服务码区域 - 优化布局和动效 -->
         <section id="service" class="mb-20 section-fade">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="w-full md:w-1/2">
@@ -370,18 +303,15 @@
                             </div>
                             <h3 class="text-2xl font-bold text-service">服务码</h3>
                         </div>
+                        <!-- 修改：使用自定义的二维码容器类 -->
                         <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100 qrcode-container"
                             id="service-qrcode"></div>
                         <p class="text-center text-gray-600 mb-3">
                             <i class="fa fa-mobile text-2xl mr-2 text-service"></i> 扫码进入服务网页
                         </p>
-                        <p class="text-center scan-tip bg-gradient-to-r from-service to-orange-400 text-sm font-medium mb-2">
+                        <p class="text-center scan-tip bg-gradient-to-r from-service to-orange-400 text-sm font-medium">
                             包含：办事指南、流程长图、资料下载、片区履职专班
                         </p>
-                        <!-- 新增扫码提示 -->
-                        <div class="scan-notice text-center">
-                            <i class="fa fa-info-circle mr-2"></i>若扫码无法打开，请用手机浏览器访问
-                        </div>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2">
@@ -440,7 +370,7 @@
         </section>
     </main>
 
-    <!-- 页脚 -->
+    <!-- 页脚 - 优化布局和质感 -->
     <footer class="bg-dark text-white py-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -481,7 +411,7 @@
                         <li><a href="#service"
                                 class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">服务码</a>
                         </li>
-                        <li><a href="tobacco.html"
+                        <li><a href="index-qr.html"
                                 class="text-gray-400 hover:text-white transition-colors duration-200 hover:ml-1">烟草专区</a>
                         </li>
                         <li><a href="#"
@@ -511,12 +441,12 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-                <p>&copy; 2024 三码服务平台 版权所有 | 浙ICP备XXXXXXXX号</p>
+                <p>&copy; 2024 三码服务平台 版权所有 | 京ICP备XXXXXXXX号</p>
             </div>
         </div>
     </footer>
 
-    <!-- 移动端悬浮按钮 -->
+    <!-- 移动端悬浮按钮 - 优化样式 -->
     <div class="fixed bottom-6 right-6 md:hidden z-40">
         <button
             class="bg-legal text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-legal/90 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-xl animate-pulse-slow">
@@ -525,14 +455,7 @@
     </div>
 
     <script>
-        // 微信浏览器兼容处理
         document.addEventListener('DOMContentLoaded', function () {
-            // 禁用微信下拉刷新
-            document.body.addEventListener('touchmove', function (e) {
-                if (e._isScroller) return;
-                e.preventDefault();
-            }, { passive: false });
-
             // 移动端菜单
             const menuBtn = document.getElementById('menuBtn');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -540,13 +463,14 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // 替换为你的备案域名（核心修改点）
-            const baseUrl = 'https://sannma3code.top/';
+            // 替换为你的域名
+            const baseUrl = 'https://sanma3code.top/';
 
             // 生成二维码的通用函数
             function generateQRCode(containerId, text, color) {
                 try {
                     const qrContainer = document.getElementById(containerId);
+                    // 获取容器的实际尺寸
                     const containerSize = qrContainer.offsetWidth || 240;
                     new QRCode(qrContainer, {
                         text: text,
@@ -562,9 +486,11 @@
                 }
             }
 
-            // 生成二维码（链接已替换为你的域名）
+            // 生成法制码
             generateQRCode('legal-qrcode', baseUrl + 'legal-info.html', '#165DFF');
+            // 生成廉洁码
             generateQRCode('integrity-qrcode', baseUrl + 'integrity-info.html', '#36D399');
+            // 生成服务码
             generateQRCode('service-qrcode', baseUrl + 'service-web.html', '#FF7D00');
 
             // 平滑滚动
@@ -610,11 +536,16 @@
                 observer.observe(section);
             });
 
-            // 新增：微信环境检测并提示
-            const isWechat = /MicroMessenger/i.test(navigator.userAgent);
-            if (isWechat) {
-                // 可以在这里添加微信专属提示
-                console.log('当前在微信浏览器中，若链接无法打开请用手机浏览器访问');
+            // 微信网页适配
+            if (typeof wx !== 'undefined') {
+                wx.config({
+                    debug: false,
+                    appId: '', // 替换为你的公众号appId
+                    timestamp: new Date().getTime(),
+                    nonceStr: 'sanma3code',
+                    signature: '', // 后端生成的签名
+                    jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline']
+                });
             }
         });
     </script>
