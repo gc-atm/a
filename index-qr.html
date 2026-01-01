@@ -6,18 +6,38 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <!-- 禁止微信识别手机号/邮箱 -->
     <meta name="format-detection" content="telephone=no, email=no">
-    <!-- 微信网页开发SDK -->
     <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
-    <!-- 解决X5内核缓存问题 -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>三码服务平台 - 服务选择</title>
-    <script src="https://cdn.bootcdn.net/ajax/libs/tailwindcss/3.4.13/tailwind.min.js"></script>
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
+        /* 全局基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #f9fafb;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .container {
+            max-width: 480px;
+            width: 100%;
+        }
+
+        /* 动画效果 */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -30,7 +50,59 @@
             }
         }
 
+        /* 头部样式 */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(to right, #165DFF, #36D399, #FF7D00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .header-icon i {
+            color: #fff;
+            font-size: 48px;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .header-desc {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        /* 卡片容器 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        /* 卡片样式 */
+        .card-link {
+            display: block;
+            text-decoration: none;
+        }
+
         .card {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f3f4f6;
             animation: fadeIn 0.5s ease-out;
             transition: all 0.3s ease;
         }
@@ -51,63 +123,139 @@
         .card:nth-child(3) {
             animation-delay: 0.3s;
         }
+
+        /* 卡片头部 */
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* 卡片内容 */
+        .card-desc {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* 各卡片配色 */
+        .card-legal .card-icon {
+            background-color: rgba(22, 93, 255, 0.1);
+        }
+
+        .card-legal .card-icon i {
+            color: #165DFF;
+            font-size: 32px;
+        }
+
+        .card-legal .card-title {
+            color: #165DFF;
+        }
+
+        .card-integrity .card-icon {
+            background-color: rgba(54, 211, 153, 0.1);
+        }
+
+        .card-integrity .card-icon i {
+            color: #36D399;
+            font-size: 32px;
+        }
+
+        .card-integrity .card-title {
+            color: #36D399;
+        }
+
+        .card-service .card-icon {
+            background-color: rgba(255, 125, 0, 0.1);
+        }
+
+        .card-service .card-icon i {
+            color: #FF7D00;
+            font-size: 32px;
+        }
+
+        .card-service .card-title {
+            color: #FF7D00;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 12px;
+        }
     </style>
 </head>
 
-<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-4">
-    <div class="max-w-md w-full">
+<body>
+    <div class="container">
         <!-- 头部 -->
-        <div class="text-center mb-10">
-            <div
-                class="w-16 h-16 bg-gradient-to-r from-[#165DFF] via-[#36D399] to-[#FF7D00] rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fa fa-qrcode text-white text-3xl"></i>
+        <div class="header">
+            <div class="header-icon">
+                <i class="fa fa-qrcode"></i>
             </div>
-            <h1 class="text-2xl font-bold text-gray-800 mb-2">三码服务平台</h1>
-            <p class="text-gray-600">请选择您需要的服务模块</p>
+            <h1 class="header-title">三码服务平台</h1>
+            <p class="header-desc">请选择您需要的服务模块</p>
         </div>
 
         <!-- 功能卡片 -->
-        <div class="grid grid-cols-1 gap-6">
+        <div class="card-grid">
             <!-- 法制码 -->
-            <a href="https://sanma3code.top/legal-info.html" class="card block">
-                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-[#165DFF]/10 rounded-full flex items-center justify-center mr-4">
-                            <i class="fa fa-gavel text-[#165DFF] text-2xl"></i>
+            <a href="https://sanma3code.top/legal-info.html" class="card-link">
+                <div class="card card-legal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fa fa-gavel"></i>
                         </div>
-                        <h2 class="text-xl font-bold text-[#165DFF]">法制码</h2>
+                        <h2 class="card-title">法制码</h2>
                     </div>
-                    <p class="text-gray-600">
+                    <p class="card-desc">
                         查看许可证信息、未成年人保护规定、电子业务指南、典型案例库、普法科普视频
                     </p>
                 </div>
             </a>
 
             <!-- 廉洁码 -->
-            <a href="https://sanma3code.top/integrity-info.html" class="card block">
-                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-[#36D399]/10 rounded-full flex items-center justify-center mr-4">
-                            <i class="fa fa-balance-scale text-[#36D399] text-2xl"></i>
+            <a href="https://sanma3code.top/integrity-info.html" class="card-link">
+                <div class="card card-integrity">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fa fa-balance-scale"></i>
                         </div>
-                        <h2 class="text-xl font-bold text-[#36D399]">廉洁码</h2>
+                        <h2 class="card-title">廉洁码</h2>
                     </div>
-                    <p class="text-gray-600">
+                    <p class="card-desc">
                         查看廉洁自律承诺书、工作人员行为规范、监督举报渠道及处理流程
                     </p>
                 </div>
             </a>
 
             <!-- 服务码 -->
-            <a href="https://sanma3code.top/service-web.html" class="card block">
-                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-[#FF7D00]/10 rounded-full flex items-center justify-center mr-4">
-                            <i class="fa fa-handshake-o text-[#FF7D00] text-2xl"></i>
+            <a href="https://sanma3code.top/service-web.html" class="card-link">
+                <div class="card card-service">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fa fa-handshake-o"></i>
                         </div>
-                        <h2 class="text-xl font-bold text-[#FF7D00]">服务码</h2>
+                        <h2 class="card-title">服务码</h2>
                     </div>
-                    <p class="text-gray-600">
+                    <p class="card-desc">
                         查看办事指南、流程长图、资料下载、片区履职专班联系信息
                     </p>
                 </div>
@@ -115,7 +263,7 @@
         </div>
 
         <!-- 页脚 -->
-        <div class="mt-10 text-center text-gray-500 text-sm">
+        <div class="footer">
             <p>&copy; 2024 三码服务平台 版权所有</p>
         </div>
     </div>
