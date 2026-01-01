@@ -3,7 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 禁止微信识别手机号/邮箱 -->
+    <meta name="format-detection" content="telephone=no, email=no">
+    <!-- 微信网页开发SDK -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
     <title>便民服务 - 三码服务平台</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -16,7 +21,7 @@
                         dark: '#1E293B',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['PingFang SC', 'Microsoft YaHei', 'sans-serif'],
                     },
                 },
             }
@@ -33,29 +38,40 @@
             .regulation-text { line-height: 1.8; }
             .regulation-article { margin-bottom: 1rem; }
             .regulation-subitem { margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem; }
-            /* 新增回到顶部按钮样式 */
-            .back-to-top {
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                z-index: 99;
+        }
+    </style>
+    <style>
+        /* 微信端滚动优化 */
+        body {
+            -webkit-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+        }
+
+        /* 解决微信X5内核字体模糊问题 */
+        * {
+            transform: translateZ(0);
+        }
+
+        /* 表格适配微信小屏 */
+        @media (max-width: 768px) {
+
+            .业态表格 th,
+            .业态表格 td {
+                font-size: 0.875rem;
+                padding: 0.5rem;
             }
-            .back-to-top.show {
-                opacity: 1;
-                visibility: visible;
+
+            .regulation-text {
+                font-size: 0.9375rem;
             }
         }
     </style>
 </head>
 
 <body class="bg-gray-50 font-sans text-dark">
-    <!-- 头部导航 -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="https://gc-atm.github.io/a/index.html" class="flex items-center space-x-2">
+            <a href="https://sanma3code.top/index.html" class="flex items-center space-x-2">
                 <i class="fa fa-arrow-left text-service text-xl"></i>
                 <h1 class="text-xl font-bold text-dark">返回首页</h1>
             </a>
@@ -77,29 +93,28 @@
                 <!-- 许可证新办 -->
                 <div class="guide-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
                     <div class="bg-gray-100 h-60 flex items-center justify-center">
-                        <!-- 优化：增加图片加载失败占位 -->
-                        <img src="001.png" alt="许可证新办流程长图" class="w-full h-full object-cover" 
-                             onerror="this.src='https://via.placeholder.com/600x400?text=新办流程长图'">
+                        <img src="https://sanma3code.top/001.png" alt="许可证新办流程长图" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h4 class="font-semibold text-lg mb-2 text-service">烟草专卖零售许可证新办流程</h4>
                         <p class="text-gray-600 text-sm mb-3">清晰展示新办许可证的全流程，包括申请、审核、勘验、发证等环节</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-service flex items-center hover:underline">
+                        <a href="https://sanma3code.top/001.png" target="_blank"
+                            class="text-service flex items-center hover:underline">
                             查看高清长图 <i class="fa fa-download ml-1"></i>
                         </a>
                     </div>
                 </div>
                 <!-- 片区履职专刊 -->
-                <div class="guide-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm md:col-span-2">
+                <div
+                    class="guide-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm md:col-span-2">
                     <div class="bg-gray-100 h-80 flex items-center justify-center">
-                        <!-- 优化：增加图片加载失败占位 -->
-                        <img src="002.png" alt="片区履职专刊长图" class="w-full h-full object-cover"
-                             onerror="this.src='https://via.placeholder.com/1200x600?text=片区履职专刊'">
+                        <img src="https://sanma3code.top/002.png" alt="片区履职专刊长图" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4">
                         <h4 class="font-semibold text-lg mb-2 text-service">片区履职专班服务指南专刊</h4>
                         <p class="text-gray-600 text-sm mb-3">包含片区划分、服务范围、联系方式、办事流程等综合信息</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-service flex items-center hover:underline">
+                        <a href="https://sanma3code.top/002.png" target="_blank"
+                            class="text-service flex items-center hover:underline">
                             查看高清长图 <i class="fa fa-download ml-1"></i>
                         </a>
                     </div>
@@ -119,7 +134,8 @@
                 <!-- 新办说明 -->
                 <div class="bg-service/5 rounded-lg p-6">
                     <h4 class="font-semibold text-xl mb-4 text-service flex items-center">
-                        <span class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">1</span>
+                        <span
+                            class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">1</span>
                         烟草专卖零售许可证新办
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -165,7 +181,8 @@
                 <!-- 延续说明 -->
                 <div class="bg-service/5 rounded-lg p-6">
                     <h4 class="font-semibold text-xl mb-4 text-service flex items-center">
-                        <span class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">2</span>
+                        <span
+                            class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">2</span>
                         烟草专卖零售许可证延续
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -207,7 +224,8 @@
                 <!-- 变更说明 -->
                 <div class="bg-service/5 rounded-lg p-6">
                     <h4 class="font-semibold text-xl mb-4 text-service flex items-center">
-                        <span class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">3</span>
+                        <span
+                            class="w-8 h-8 bg-service text-white rounded-full flex items-center justify-center mr-2 text-sm">3</span>
                         烟草专卖零售许可证变更/补办
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -243,7 +261,7 @@
                 <h3 class="text-2xl font-bold text-dark">零售业态分类说明</h3>
             </div>
             <!-- 响应式表格容器（带滚动） -->
-            <div class="overflow-x-auto rounded-lg border border-gray-200">
+            <div class="overflow-x-auto">
                 <table class="业态表格 w-full border-collapse">
                     <!-- 表头 -->
                     <thead>
@@ -363,7 +381,7 @@
             <p class="mt-4 text-center text-gray-600 italic">零售业态分类详细信息表</p>
         </section>
 
-        <!-- 新增：绍兴市烟草制品零售点合理布局规定 -->
+        <!-- 绍兴市烟草制品零售点合理布局规定 -->
         <section class="mb-16 bg-white rounded-xl p-6 md:p-8 shadow-sm">
             <div class="flex items-center mb-6">
                 <div class="w-12 h-12 bg-service/10 rounded-full flex items-center justify-center mr-4">
@@ -371,9 +389,8 @@
                 </div>
                 <h3 class="text-2xl font-bold text-dark">绍兴市烟草制品零售点合理布局规定</h3>
             </div>
-            <!-- 法规正文容器（带内边距和阴影，提升阅读体验） -->
-            <div class="bg-gray-50 rounded-lg p-6 md:p-8 shadow-inner regulation-text text-gray-700 max-h-[800px] overflow-y-auto pr-2">
-                <!-- 标题居中 -->
+            <!-- 法规正文容器 -->
+            <div class="bg-gray-50 rounded-lg p-6 md:p-8 shadow-inner regulation-text text-gray-700">
                 <h4 class="text-xl font-bold text-center text-dark mb-8">绍兴市烟草制品零售点合理布局规定</h4>
 
                 <!-- 第一条 -->
@@ -605,15 +622,15 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- 下载项1 -->
-                <a href="#" target="_blank" rel="noopener noreferrer"
+                <a href="https://sanma3code.top/烟草专卖零售许可证申请表.pdf" target="_blank"
                     class="guide-card bg-white border border-gray-200 rounded-lg p-4 flex items-center hover:shadow-md">
                     <i class="fa fa-file-pdf-o text-3xl text-red-500 mr-4"></i>
                     <div>
                         <h4 class="font-semibold text-lg">烟草专卖零售许可证申请表</h4>
                     </div>
                 </a>
-                <!-- 新增下载项：合理布局规定PDF -->
-                <a href="#" target="_blank" rel="noopener noreferrer"
+                <!-- 下载项2 -->
+                <a href="https://sanma3code.top/零售点合理布局规定.pdf" target="_blank"
                     class="guide-card bg-white border border-gray-200 rounded-lg p-4 flex items-center hover:shadow-md">
                     <i class="fa fa-file-pdf-o text-3xl text-red-500 mr-4"></i>
                     <div>
@@ -624,45 +641,41 @@
         </section>
     </main>
 
-    <!-- 页脚 -->
     <footer class="bg-dark text-white py-8 mt-16">
         <div class="container mx-auto px-4 text-center">
             <p class="text-gray-400">&copy; 2024 三码服务平台 - 便民服务专区</p>
-            <a href="https://gc-atm.github.io/a/index.html"
-                class="text-service hover:underline mt-2 inline-block">返回首页</a>
+            <a href="https://sanma3code.top/index.html" class="text-service hover:underline mt-2 inline-block">返回首页</a>
         </div>
     </footer>
 
-    <!-- 回到顶部按钮 -->
-    <button id="backToTop" class="back-to-top bg-service text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
-        <i class="fa fa-arrow-up"></i>
-    </button>
-
-    <!-- JavaScript 功能 -->
+    <!-- 微信JSSDK配置（如需分享等功能可启用） -->
     <script>
-        // 回到顶部功能
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        // 监听滚动事件
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
+        document.addEventListener('DOMContentLoaded', function () {
+            // 微信端适配：隐藏网页右上角菜单（可选）
+            if (typeof wx !== 'undefined') {
+                wx.config({
+                    debug: false,
+                    appId: '', // 替换为你的公众号AppID
+                    timestamp: new Date().getTime(),
+                    nonceStr: 'sanma3code',
+                    signature: '', // 后端生成的签名
+                    jsApiList: ['hideOptionMenu']
+                });
+                wx.ready(function () {
+                    // wx.hideOptionMenu(); // 如需隐藏菜单可取消注释
+                });
             }
-        });
-        
-        // 点击回到顶部
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
 
-        // 优化移动端体验：点击导航栏标题也返回首页
-        document.querySelector('h2.text-xl.font-bold.text-service').addEventListener('click', () => {
-            window.location.href = 'https://gc-atm.github.io/a/index.html';
+            // 解决微信端点击链接延迟问题
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    if (href) {
+                        window.location.href = href;
+                    }
+                });
+            });
         });
     </script>
 </body>
